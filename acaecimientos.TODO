@@ -1,0 +1,6 @@
++ nombre BBDD -> devarquivo
+  -> database.php: configuramos la BBDD
++ Instalamos el un  módulo para implementar la seguridad en la Web. http://docs.cartalyst.com/sentry-2/
+  -> Se añade el provider 'Cartalyst\Sentry\SentryServiceProvider', (app/config/app.php)
+  -> Se añade el facade 'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry' (app/config/app.php)
+  -> Migramos las tablas:  php artisan migrate --package=cartalyst/sentry
