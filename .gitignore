@@ -3,6 +3,7 @@
 /build
 composer.phar
 composer.lock
+Guardfile
 
 # Numerous always-ignore extensions
 *.diff
