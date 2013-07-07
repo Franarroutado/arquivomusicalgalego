@@ -4,6 +4,9 @@
 composer.phar
 composer.lock
 Guardfile
+CONTRIBUTING.md
+acaecimientos.TODO
+phpunit.xml
 
 # Numerous always-ignore extensions
 *.diff
