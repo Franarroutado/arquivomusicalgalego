@@ -7,14 +7,21 @@ class UsersTableSeeder extends Seeder {
     	// Uncomment the below to wipe the table clean before populating
     	DB::table('users')->delete();
 
-        $users = ['email' => 'amg@amg.com', 'password' => 'test', 'first_name' => 'superadmin'];
+        $administrator = ['email' => 'admin@amg.com', 'password' => 'admin', 'first_name' => 'admin'];
+        $editor = ['email' => 'editor@amg.com', 'password' => 'editor', 'first_name' => 'editor'];
+        $moderator = ['email' => 'moderator@amg.com', 'password' => 'moderator', 'first_name' => 'moderator'];
 
-        $newUser = Sentry::getUserProvider()->create($users);      
+        $newUser[] = Sentry::getUserProvider()->create($administrator);  
+        $newUser[] = Sentry::getUserProvider()->create($editor); 
+        $newUser[] = Sentry::getUserProvider()->create($moderator);     
 
-        // Get the activation code
-        $activationCode = $newUser->getActivationCode();
-        // Attempt activate account
-        $newUser->attemptActivation($activationCode);
+        foreach ($newUser as $user) {
+            // Get the activation code
+            $activationCode = $user->getActivationCode();
+            // Attempt activate account
+            $user->attemptActivation($activationCode);
+        }
+        
 
         // Uncomment the below to run the seeder
         //DB::table('users')->insert($users);
