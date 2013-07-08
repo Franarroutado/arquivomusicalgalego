@@ -11,10 +11,38 @@
 |
 */
 
+/** ------------------------------------------
+ *  Dashboard Routes
+ *  ------------------------------------------
+ */
+
+Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'],function(){
+  // Home
+  Route::get('/', function()
+  {
+    return View::make('hello');
+  });
+
+  // User management
+  Route::get('users', function(){
+    return 'Hello users';
+  });
+});
+
+/** ------------------------------------------
+ *  Frontend Routes
+ *  ------------------------------------------
+ */
+
+Route::get('login', function() {
+  return View::make('login');
+});
+
 Route::get('/', function()
 {
-	return View::make('hello');
+  return View::make('hello');
 });
+
 
 Route::get('test', function(){
 
@@ -63,8 +91,20 @@ Route::get('test', function(){
     // Get Groups
     $groups = $user->getGroups();
 
+    foreach ($groups as $key) {
+      echo $key . '<br/>';;
+    }
+
+    $user->permissions = ['users.edit' => 1, 'users.create' => -1 ];
+
+    $user->save();
+
     $permissions = $user->getPermissions();
-    dd($groups);
+
+    foreach ($permissions as $key => $value) {
+      echo $key . ' : ' . $value . '<br/>';
+    }
+    //dd($groups);
 
   } else {
     echo '<p>Not logged in</p>';

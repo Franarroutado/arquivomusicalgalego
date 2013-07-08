@@ -44,6 +44,11 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('auth.sentry2', function()
+{
+  if (!Sentry::check()) return Redirect::to('login');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter
