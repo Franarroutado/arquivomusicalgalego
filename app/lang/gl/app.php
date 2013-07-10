@@ -45,5 +45,20 @@ return array(
     // 'select_a_business_first' => 'Select the business you want to enter',
     // 'welcome_to' => 'Welcome to :business',
     'forgot_your_password' => '¿Esquenceu a sua password?',
+  ],
+  'authors' => 
+  [ 'name' => 'Nome',
+    'author'     => 'Autor',
+    'created_by' => 'Creado por',
+    'created_at' => 'Fecha creación',
+    'created'    => 'Novo autor creado.',
+    'updated'    => 'Autor actualizado.',
+    'deleted'    => 'Autor :name eliminado con éxito.' ],
+  '404' => 
+  [ 'expresion1' => '¡Sapristi, caracoles, canastos!', 
+    'expresion2' => '!Ups¡',
+    'expresion3' => '!Ay¡',
+    'message'    => 'Esta páxina non existe.',
+    'gohome'     => 'Volver ó inicio.'
   ]
 );

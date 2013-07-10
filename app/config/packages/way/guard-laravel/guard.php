@@ -34,7 +34,7 @@ return array(
 	| leave this as it is.
 	|
 	*/
-	'compile_path' => 'public',
+	'compile_path' => 'public/assets',
 
 	/*
 	|--------------------------------------------------------------------------

@@ -14,9 +14,11 @@ return array(
   'reset'    => 'Resetear',
   'search'   => 'Pesquisar',
   'new'      => 'Novo',
+  'new_entity' => 'Novo :entity',
   'create'   => 'Crear',
   'edit'     => 'Editar',
   'update'   => 'Actualizar',
+  'save'     => 'Gardar',
   'remove'   => 'Quitar',
   'delete'   => 'Eliminar',
   'back'     => 'Atrás',
@@ -28,8 +30,14 @@ return array(
   'upload'   => 'Subir',
   'download' => 'Descargar',
 
+  # Entity
+  'author' => 'Autor',
+
   'login' =>
   [ 'login'    => 'Login',
     'signup'   => 'Signup',
-    'forgot'   => 'Esquenceu contraseña',  ]
+    'forgot'   => 'Esquenceu contraseña',  ],
+  'modal' =>
+  [ 'barTitle' => 'Confirmación de borrado',
+    'delteMsg' => 'Seguro que desexa eliminar o :entity']
 );

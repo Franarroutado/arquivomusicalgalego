@@ -12,7 +12,9 @@ return array(
 	| such as the size rules. Feel free to tweak each of these messages.
 	|
 	*/
-
+	"validation_err1"		 => "!Ups¡ algo non foi ben.",
+	"validation_err2"		 => "Ay, faltan cousas por poñer.",
+	"validation_err3"		 => "Non se puido facer, algo falta...",
 	"accepted"         => "The :attribute must be accepted.",
 	"active_url"       => "The :attribute is not a valid URL.",
 	"after"            => "The :attribute must be a date after :date.",
@@ -31,7 +33,7 @@ return array(
 	"different"        => "The :attribute and :other must be different.",
 	"digits"           => "The :attribute must be :digits digits.",
 	"digits_between"   => "The :attribute must be between :min and :max digits.",
-	"email"            => "The :attribute format is invalid.",
+	"email"            => "Non está usando un formato de email correcto",
 	"exists"           => "The selected :attribute is invalid.",
 	"image"            => "The :attribute must be an image.",
 	"in"               => "The selected :attribute is invalid.",
@@ -51,7 +53,8 @@ return array(
 	"not_in"           => "The selected :attribute is invalid.",
 	"numeric"          => "The :attribute must be a number.",
 	"regex"            => "The :attribute format is invalid.",
-	"required"         => "The :attribute field is required.",
+	// "required"         => "The :attribute field is required.",
+	"required"         => "Obrigatorio",
 	"required_if"      => "The :attribute field is required when :other is :value.",
 	"required_with"    => "The :attribute field is required when :values is present.",
 	"required_without" => "The :attribute field is required when :values is not present.",
@@ -89,5 +92,13 @@ return array(
 	*/
 
 	'attributes' => array(),
+
+	'sentry2' => array(
+		'wrong_password' => 'O password no e válido.',
+		'wrong_user' => 'Usuario non atopado.',
+		'non_activated' => 'O usuario non está activado',
+		'autenticado' => 'Bembido, :username',
+		'signout' => 'Que pase un bo dia!'
+	),
 
 );

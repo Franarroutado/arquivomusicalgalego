@@ -12,21 +12,32 @@
 */
 
 /** ------------------------------------------
+ *  Route model binding
+ *  ------------------------------------------
+ */
+Route::model('user', 'User');
+Route::model('autor', 'Autore');
+
+/** ------------------------------------------
  *  Dashboard Routes
  *  ------------------------------------------
  */
 
-Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'],function(){
-  // Home
-  Route::get('/', function()
-  {
-    return View::make('hello');
-  });
+Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'], function()
+{
+  // Dashboard
+  Route::get('/', ['as' => 'dashboard', 'uses' => 'DashboardHomeController@getIndex']);
 
-  // User management
-  Route::get('users', function(){
-    return 'Hello users';
+
+  Route::get('autores/{criteria}/search', ['as' => 'dashboard.autores.search', 'uses' => 'DashboardAutoresController@getSearch'])
+        ->where('criteria', '[a-z ñáéíóúA-Z]+');
+
+  // Authors management
+  Route::bind('autores', function($id, $route){
+    return Autore::with('user')->find($id);
   });
+  Route::resource('autores', 'DashboardAutoresController');
+
 });
 
 /** ------------------------------------------
@@ -34,84 +45,10 @@ Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'],function(){
  *  ------------------------------------------
  */
 
-Route::get('login', function() {
-  return View::make('login');
-});
+// User RESTful Routes (Login, Logout, Register, etc)
+Route::controller('users', 'UsersController', ['getLogin' => 'login', 'postLogin' => 'post.login','getLogout' => 'logout']);
 
 Route::get('/', function()
 {
   return View::make('hello');
-});
-
-
-Route::get('test', function(){
-
-  //Sentry::logout();
-
-  $myCredent = ['email' => 'amg@amg.com', 'password' => 'test'];
-  
-  try {
-    //$myCredent = ['email' => 'amg@amg.com'];
-    $user = Sentry::authenticate($myCredent);
-  }
-  catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
-  {
-      echo 'Login field is required.';
-  }
-  catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
-  {
-      echo 'Password field is required.';
-  }
-  catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
-  {
-      echo 'Wrong password, try again.';
-  }
-  catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-  {
-      echo 'User was not found.';
-  }
-  catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
-  {
-      echo 'User is not activated.';
-  }
-  // The following is only required if throttle is enabled
-  catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
-  {
-      echo 'User is suspended.';
-  }
-  catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
-  {
-      echo 'User is banned.';
-  }
-
-
-  if ( Sentry::check() ) {
-    echo '<p>Logged in</p>';
-
-    // Get Groups
-    $groups = $user->getGroups();
-
-    foreach ($groups as $key) {
-      echo $key . '<br/>';;
-    }
-
-    $user->permissions = ['users.edit' => 1, 'users.create' => -1 ];
-
-    $user->save();
-
-    $permissions = $user->getPermissions();
-
-    foreach ($permissions as $key => $value) {
-      echo $key . ' : ' . $value . '<br/>';
-    }
-    //dd($groups);
-
-  } else {
-    echo '<p>Not logged in</p>';
-  }
-
-  
-  
-
-  //dd( Sentry::getUser() );
 });

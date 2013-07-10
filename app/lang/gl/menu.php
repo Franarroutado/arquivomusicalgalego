@@ -12,7 +12,7 @@ return array(
   'dashboard' => 'Dashboard',
   'account' => 'Miña conta',
   'settings' => 'Configuración',
-  'signin' => 'Sign In',
-  'signout' => 'Sign Out',
+  'signin' => 'Inciar Sesión',
+  'signout' => 'Pechar Sesión',
   'restePassword' => 'Trocar contraseña',
 );
