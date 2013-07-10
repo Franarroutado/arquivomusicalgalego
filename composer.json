@@ -5,7 +5,8 @@
 	"require": {
 		"laravel/framework": "4.0.*",
 		"cartalyst/sentry": "2.0.*",
-		"way/generators": "dev-master"
+		"way/generators": "dev-master",
+		"davejamesmiller/laravel-breadcrumbs": "dev-master"
 	},
 	"require-dev": {
 		"way/guard-laravel": "dev-master"
@@ -14,6 +15,7 @@
 		"classmap": [
 			"app/commands",
 			"app/controllers",
+			"app/libraries",
 			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",

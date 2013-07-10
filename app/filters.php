@@ -46,7 +46,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('auth.sentry2', function()
 {
-  if (!Sentry::check()) return Redirect::to('login');
+  if (!Sentry::check()) return Redirect::route('login');
 });
 
 /*
