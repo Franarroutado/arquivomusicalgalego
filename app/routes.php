@@ -50,5 +50,9 @@ Route::controller('users', 'UsersController', ['getLogin' => 'login', 'postLogin
 
 Route::get('/', function()
 {
-  return View::make('hello');
+  return Redirect::route('dashboard');
+});
+
+Route::get('dragndrop', function(){
+  return View::make('dragndrop');
 });
