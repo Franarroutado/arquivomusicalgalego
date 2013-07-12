@@ -1,6 +1,5 @@
 <?php
 
-
 Breadcrumbs::register('dashboard', function($breadcrumbs) {
     $breadcrumbs->push(trans('breadcrumbs.dashboard'), route('dashboard'));
 });
@@ -51,4 +50,20 @@ Breadcrumbs::register('materialesEdit', function($breadcrumbs, $id) {
 Breadcrumbs::register('materialesCreate', function($breadcrumbs) {
     $breadcrumbs->parent('materiales');
     $breadcrumbs->push(trans('breadcrumbs.create'), route('dashboard.materiales.create'));
+});
+
+//*************** SCHOOLS ***************//
+Breadcrumbs::register('centros', function($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push(trans('breadcrumbs.schools'), route('dashboard.centros.index'));
+});
+
+Breadcrumbs::register('centrosEdit', function($breadcrumbs, $id) {
+    $breadcrumbs->parent('centros');
+    $breadcrumbs->push(trans('breadcrumbs.edit'), route('dashboard.centros.edit', $id));
+});
+
+Breadcrumbs::register('centrosCreate', function($breadcrumbs) {
+    $breadcrumbs->parent('centros');
+    $breadcrumbs->push(trans('breadcrumbs.create'), route('dashboard.centros.create'));
 });

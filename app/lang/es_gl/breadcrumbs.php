@@ -7,6 +7,7 @@ return array(
   'authors'     =>   'Autores',
   'genres'      =>   'Xéneros',
   'materials'   =>   'Materiales',
+  'schools'     =>   'Centros',
   'edit'        =>   'Editar',
   'create'      =>   'Crear',
 );

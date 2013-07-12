@@ -2,9 +2,9 @@
 <ul id="dashboard-menu" class="nav nav-list collapse in">
     <li ><a href="calendar.html">{{ trans('menu.files') }}</a></li>
     <li>{{ link_to_route('dashboard.autores.store', trans('menu.authors')) }}</li>
-    <li ><a href="users.html">{{ trans('menu.schools') }}</a></li>
-    <li >{{ link_to_route('dashboard.generos.store', trans('menu.genres')) }}</li>
-    <li >{{ link_to_route('dashboard.materiales.store', trans('menu.instruments')) }}</li>
+    <li>{{ link_to_route('dashboard.centros.store', trans('menu.schools')) }}</li>
+    <li>{{ link_to_route('dashboard.generos.store', trans('menu.genres')) }}</li>
+    <li>{{ link_to_route('dashboard.materiales.store', trans('menu.instruments')) }}</li>
     
 </ul>
 

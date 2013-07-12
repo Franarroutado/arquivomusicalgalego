@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('AutoresTableSeeder');
 		$this->call('GenerosTableSeeder');
 		$this->call('MaterialesTableSeeder');
+		$this->call('CentrosTableSeeder');
 	}
 
 }

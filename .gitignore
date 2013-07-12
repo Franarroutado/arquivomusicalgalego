@@ -1,6 +1,7 @@
 /bootstrap/compiled.php
 /vendor
 /build
+public/ckeditor/
 composer.phar
 composer.lock
 Guardfile

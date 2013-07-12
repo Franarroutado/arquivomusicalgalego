@@ -100,7 +100,7 @@
             @include('_partials.footer')
         </div> <!-- container-fluid -->
     </div> <!-- content -->
-    {{ HTML::script('assets/lib/bootstrap/js/bootstrap.js')  }}
+    {{ HTML::script('assets/lib/bootstrap/js/bootstrap.js') }}
     <script type="text/javascript">
         $("[rel=tooltip]").tooltip();
         $(function() {

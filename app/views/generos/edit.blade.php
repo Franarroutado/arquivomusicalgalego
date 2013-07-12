@@ -61,7 +61,6 @@
 $(document).ready(function(){
 
   function init() {
-    $('#newGenreComponent').hide();
     // Add this plugin in Jquery
     $.substitute = function(str, sub) {
         return str.replace(/\{(.+?)\}/g, function($0, $1) {

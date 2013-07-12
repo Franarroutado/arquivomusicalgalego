@@ -34,6 +34,7 @@ return array(
   'author'   => 'Autor',
   'genre'    => 'Xénero',
   'material' => 'Material',
+  'school'   => 'Centro',
 
   'login' =>
   [ 'login'    => 'Login',
