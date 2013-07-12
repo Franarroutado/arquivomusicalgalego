@@ -36,3 +36,19 @@ Breadcrumbs::register('generosCreate', function($breadcrumbs) {
     $breadcrumbs->parent('generos');
     $breadcrumbs->push(trans('breadcrumbs.create'), route('dashboard.generos.create'));
 });
+
+//*************** MATERIALS ***************//
+Breadcrumbs::register('materiales', function($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push(trans('breadcrumbs.materials'), route('dashboard.materiales.index'));
+});
+
+Breadcrumbs::register('materialesEdit', function($breadcrumbs, $id) {
+    $breadcrumbs->parent('materiales');
+    $breadcrumbs->push(trans('breadcrumbs.edit'), route('dashboard.materiales.edit', $id));
+});
+
+Breadcrumbs::register('materialesCreate', function($breadcrumbs) {
+    $breadcrumbs->parent('materiales');
+    $breadcrumbs->push(trans('breadcrumbs.create'), route('dashboard.materiales.create'));
+});

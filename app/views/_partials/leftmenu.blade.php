@@ -4,7 +4,7 @@
     <li>{{ link_to_route('dashboard.autores.store', trans('menu.authors')) }}</li>
     <li ><a href="users.html">{{ trans('menu.schools') }}</a></li>
     <li >{{ link_to_route('dashboard.generos.store', trans('menu.genres')) }}</li>
-    <li ><a href="media.html">{{ trans('menu.instruments') }}</a></li>
+    <li >{{ link_to_route('dashboard.materiales.store', trans('menu.instruments')) }}</li>
     
 </ul>
 

@@ -18,6 +18,7 @@
 Route::model('user', 'User');
 Route::model('autor', 'Autore');
 Route::model('genero', 'Genero');
+Route::model('material', 'Material');
 
 /** ------------------------------------------
  *  Dashboard Routes
@@ -47,6 +48,16 @@ Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'], function()
         ->where('criteria', '[a-z ñáéíóúA-Z]+');
 
   Route::resource('generos', 'DashboardGenerosController');
+
+  // Materials management
+  Route::bind('materiales', function($id, $route){
+    return Material::with('user')->find($id);
+  });
+
+  Route::get('materiales/{criteria}/search', ['as' => 'dashboard.materiales.search', 'uses' => 'DashboardMaterialesController@getSearch'])
+        ->where('criteria', '[a-z ñáéíóúA-Z]+');
+
+  Route::resource('materiales', 'DashboardMaterialesController');
 
 });
 

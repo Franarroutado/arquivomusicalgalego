@@ -1,24 +1,26 @@
 @extends('master')
 
 {{-- Breadcrumb --}}
-@section('breadcrumbs', Breadcrumbs::render('generosCreate'))
+@section('breadcrumbs', Breadcrumbs::render('materialesCreate'))
 
 {{-- Content --}}
 @section('content')
   <div class="container-fluid">
     <div class="row-fluid">
-      {{ Form::open(array('method' => 'POST', 'route' => array('dashboard.generos.store'))) }}
+      {{ Form::open(array('method' => 'POST', 'route' => array('dashboard.materiales.store'))) }}
         <div class="btn-toolbar">
           <button class="btn btn-primary"><i class="icon-save"></i> {{ trans('button.save') }}</button>
-          <a href="{{ route('dashboard.generos.index')  }}" class="btn">@lang('button.cancel')</a>
+          <a href="{{ route('dashboard.materiales.index')  }}" class="btn">@lang('button.cancel')</a>
           <div class="btn-group"></div>
         </div>
         <div class="well">
-          {{ Form::label('lang', trans('app.genres.lang').":").AMG::displayErr($errors, 'lang') }}
+          {{ Form::label('abrev', trans('app.materials.abrev').":").AMG::displayErr($errors, 'abrev') }}
+          {{ Form::text('abrev', null, ['class' => 'input-xlarge']) }} 
+          {{ Form::label('lang', trans('app.materials.lang').":") . AMG::displayErr($errors, 'lang') }}
           <div class="well">
-            <div id="newGenreContainer">
+            <div id="newGenreContainer" style="height: 30px; width: 360px; margin-bottom:5px;">
               <div class="input-append">
-                <input id="txtGen" style="width: 240px" type="text" placeholder="@lang('app.genres.insertLang')">
+                <input id="txtGen" style="width: 240px" type="text" placeholder="@lang('app.materials.insertLang')">
                 <input id="txtLan" style="width: 40px" value="es_gl"  type="text">
                 <button id="btnAddGenre" class="btn" type="button"><i class="icon-plus-sign"></i></button>
               </div>
@@ -27,14 +29,14 @@
             <div id="genreContainer"></div>
           </div>
           {{ Form::hidden('lang', '{}') }}
-          {{ Form::label('username', trans('app.genres.created_by').":") }}
+          {{ Form::label('username', trans('app.materials.created_by').":") }}
           {{ Form::text('username', Sentry::getUser()->first_name, ['class' => 'input-xlarge', 'disabled']) }}
-          {{ Form::label('created_at', trans('app.genres.created_at').":") }}
+          {{ Form::label('created_at', trans('app.materials.created_at').":") }}
           {{ Form::text('created_at',null, ['class' => 'input-xlarge', 'disabled']) }}
         </div>
         <div class="btn-toolbar">
           <button class="btn btn-primary"><i class="icon-save"></i> {{ trans('button.save') }}</button>
-          <a href="{{ route('dashboard.generos.index')  }}" class="btn">@lang('button.cancel')</a>
+          <a href="{{ route('dashboard.materiales.index')  }}" class="btn">@lang('button.cancel')</a>
           <div class="btn-group"></div>
         </div>
       </form>
@@ -62,7 +64,7 @@
 
       // Return a genre component
       function buildComponent(genre, lang) {
-        var genreString = genre+" - "+lang;
+        var genreString = genre+" ("+lang+")";
         // Load the component
         var genreComponent = '<div class="input-append">' +
               '<input class="span4" data-lang="{lang}"  value="{text}" disabled  id="appendedInputButton" type="text">' +
@@ -126,7 +128,7 @@
           addComponent(newComponent);
           $txtGen.val("");
         } else {
-          alert(" @lang('app.genres.newgenfail')
+          alert(" @lang('app.materials.newgenfail')
            ");
         }
       });

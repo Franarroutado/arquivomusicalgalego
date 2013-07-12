@@ -33,6 +33,7 @@ return array(
   # Entity
   'author'   => 'Autor',
   'genre'    => 'Xénero',
+  'material' => 'Material',
 
   'login' =>
   [ 'login'    => 'Login',
