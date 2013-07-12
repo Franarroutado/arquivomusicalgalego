@@ -17,6 +17,7 @@
  */
 Route::model('user', 'User');
 Route::model('autor', 'Autore');
+Route::model('genero', 'Genero');
 
 /** ------------------------------------------
  *  Dashboard Routes
@@ -28,15 +29,24 @@ Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'], function()
   // Dashboard
   Route::get('/', ['as' => 'dashboard', 'uses' => 'DashboardHomeController@getIndex']);
 
-
+  // Authors management
   Route::get('autores/{criteria}/search', ['as' => 'dashboard.autores.search', 'uses' => 'DashboardAutoresController@getSearch'])
         ->where('criteria', '[a-z ñáéíóúA-Z]+');
 
-  // Authors management
   Route::bind('autores', function($id, $route){
     return Autore::with('user')->find($id);
   });
   Route::resource('autores', 'DashboardAutoresController');
+
+  // Genres management
+  Route::bind('generos', function($id, $route){
+    return Genero::with('user')->find($id);
+  });
+
+  Route::get('generos/{criteria}/search', ['as' => 'dashboard.generos.search', 'uses' => 'DashboardGenerosController@getSearch'])
+        ->where('criteria', '[a-z ñáéíóúA-Z]+');
+
+  Route::resource('generos', 'DashboardGenerosController');
 
 });
 

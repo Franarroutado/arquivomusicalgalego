@@ -1,13 +1,13 @@
 <?php
 
-class DashboardAutoresController extends BaseController {
+class DashboardGenerosController extends BaseController {
 
-    protected $autore;
+    protected $genero;
 
-    public function __construct(Autore $autore)
+    public function __construct(Genero $genero)
     {
         // parent::__construct();
-        $this->autore = $autore;
+        $this->genero = $genero;
     }
 
     /**
@@ -17,8 +17,8 @@ class DashboardAutoresController extends BaseController {
      */
     public function index()
     {
-        $autores = Autore::paginate(15);
-        return View::make('autores.index', compact('autores'));
+        $generos = Genero::paginate(15);
+        return View::make('generos.index', compact('generos'));
     }
 
     /**
@@ -28,28 +28,31 @@ class DashboardAutoresController extends BaseController {
      */
     public function create()
     {
-        return View::make('autores.create');
+        return View::make('generos.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created genre in storage.
      *
      * @return Response
      */
     public function store()
     {
-        $author = new Autore(
-        [ 'nombre'  => Input::get('nombre'),
+        $langField = Input::get('lang');
+        if ($langField === '{}') $langField = '';
+
+        $genre = new Genero(
+        [ 'lang'  => $langField,
           'user_id' => Sentry::getUser()->id ]);
 
-        if ($author->save()) {
-            return Redirect::route('dashboard.autores.index')
-                ->with('success', trans('app.authors.created'));
+        if ($genre->save()) {
+            return Redirect::route('dashboard.generos.index')
+                ->with('success', trans('app.genres.created'));
         }
 
         return Redirect::back()
             ->withInput()
-            ->withErrors($author->errors)
+            ->withErrors($genre->errors)
             ->with('error', trans(AMG::displayRandomErrorValidation()));
     }
 
@@ -61,7 +64,7 @@ class DashboardAutoresController extends BaseController {
      */
     public function show($id)
     {
-        return "Estoy en el show";
+        //
     }
 
     /**
@@ -70,9 +73,9 @@ class DashboardAutoresController extends BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function edit($autore)
+    public function edit($genero)
     {
-        return View::make('autores.edit', compact('autore'));
+        return View::make('generos.edit', compact('genero'));
     }
 
     /**
@@ -81,18 +84,21 @@ class DashboardAutoresController extends BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function update($autore)
+    public function update($genero)
     {
-        $autore->nombre = Input::get('nombre');
+        $langField = Input::get('lang');
+        if ($langField === '{}') $langField = '';
 
-        if ($autore->save()) {
-            return Redirect::route('dashboard.autores.index')
-                ->with('success', trans('app.authors.updated'));
+        $genero->lang = $langField;
+
+        if ($genero->save()) {
+            return Redirect::route('dashboard.generos.index')
+                ->with('success', trans('app.genres.updated'));
         }
 
         return Redirect::back()
             ->withInput()
-            ->withErrors($autore->errors)
+            ->withErrors($genero->errors)
             ->with('error', trans(AMG::displayRandomErrorValidation()));
     }
 
@@ -102,16 +108,16 @@ class DashboardAutoresController extends BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($autore)
+    public function destroy($genero)
     {
-        if ($autore->delete()) return Redirect::route('dashboard.autores.index')
-            ->with('success', trans('app.authors.deleted', ['name' => $autore->nombre]));
+        if ($genero->delete()) return Redirect::route('dashboard.generos.index')
+            ->with('success', trans('app.genres.deleted', ['name' => $genero->nombre]));
 
         return Redirect::back()
-            ->withErrors($autore->errors)
+            ->withErrors($genero->errors)
             ->with('error', trans(AMG::displayRandomErrorValidation()));
     }
-
+ 
     /**
      * [getSearch description]
      * @param  [type] $criteria [description]
@@ -119,8 +125,8 @@ class DashboardAutoresController extends BaseController {
      */
     public function getSearch($criteria) 
     {
-        $autores = Autore::where('nombre', 'like' , '%'.$criteria.'%')->paginate(15);
-        return View::make('autores.index', compact('autores'));
+        $generos = Genero::where('lang', 'like' , '%'.$criteria.'%')->paginate(15);
+        return View::make('generos.index', compact('generos'));
     }
 
 }

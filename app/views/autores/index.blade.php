@@ -22,6 +22,7 @@
         </tr>
       </thead>
       <tbody>
+        @if (count($autores) > 0)
           @foreach ($autores as $autor)
             <tr>
               <td>{{ $autor->nombre }}</td>
@@ -32,6 +33,14 @@
               </td>
             </tr>
           @endforeach
+        @else
+          <tr>
+            <td>@lang('app.msg.no_results')</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        @endif
       </tbody>
     </table>
 </div>

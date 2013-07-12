@@ -18,7 +18,7 @@
       {{ Form::label('nombre', trans('app.authors.name').":") . AMG::displayErr($errors, 'nombre') }}
       {{ Form::text('nombre',null, ['class' => 'input-xlarge']) }}
       {{ Form::label('nombre.user.first_name', trans('app.authors.created_by').":") }}
-      {{ Form::text('fist_name', $autore->user->email, ['class' => 'input-xlarge', 'disabled']) }} 
+      {{ Form::text('user.first_name', null, ['class' => 'input-xlarge', 'disabled']) }} 
       {{ Form::label('created_at', trans('app.authors.created_at').":") }}
       {{ Form::text('created_at',null, ['class' => 'input-xlarge', 'disabled']) }}
     </div>

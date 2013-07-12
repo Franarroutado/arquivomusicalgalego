@@ -1,0 +1,29 @@
++--------+--------------------------------------------+---------------------------+--------------------------------------+----------------+---------------+
+| Domain | URI                                        | Name                      | Action                               | Before Filters | After Filters |
++--------+--------------------------------------------+---------------------------+--------------------------------------+----------------+---------------+
+|        | GET /dashboard                             | dashboard                 | DashboardHomeController@getIndex     | auth.sentry2   |               |
+|        | GET /dashboard/autores/{criteria}/search   | dashboard.autores.search  | DashboardAutoresController@getSearch | auth.sentry2   |               |
+|        | GET /dashboard/autores                     | dashboard.autores.index   | DashboardAutoresController@index     | auth.sentry2   |               |
+|        | GET /dashboard/autores/create              | dashboard.autores.create  | DashboardAutoresController@create    | auth.sentry2   |               |
+|        | POST /dashboard/autores                    | dashboard.autores.store   | DashboardAutoresController@store     | auth.sentry2   |               |
+|        | GET /dashboard/autores/{autores}           | dashboard.autores.show    | DashboardAutoresController@show      | auth.sentry2   |               |
+|        | GET /dashboard/autores/{autores}/edit      | dashboard.autores.edit    | DashboardAutoresController@edit      | auth.sentry2   |               |
+|        | PUT /dashboard/autores/{autores}           | dashboard.autores.update  | DashboardAutoresController@update    | auth.sentry2   |               |
+|        | PATCH /dashboard/autores/{autores}         |                           | DashboardAutoresController@update    | auth.sentry2   |               |
+|        | DELETE /dashboard/autores/{autores}        | dashboard.autores.destroy | DashboardAutoresController@destroy   | auth.sentry2   |               |
+|        | GET /dashboard/generos/{criteria}/search   | dashboard.generos.search  | DashboardGenerosController@getSearch | auth.sentry2   |               |
+|        | GET /dashboard/generos                     | dashboard.generos.index   | DashboardGenerosController@index     | auth.sentry2   |               |
+|        | GET /dashboard/generos/create              | dashboard.generos.create  | DashboardGenerosController@create    | auth.sentry2   |               |
+|        | POST /dashboard/generos                    | dashboard.generos.store   | DashboardGenerosController@store     | auth.sentry2   |               |
+|        | GET /dashboard/generos/{generos}           | dashboard.generos.show    | DashboardGenerosController@show      | auth.sentry2   |               |
+|        | GET /dashboard/generos/{generos}/edit      | dashboard.generos.edit    | DashboardGenerosController@edit      | auth.sentry2   |               |
+|        | PUT /dashboard/generos/{generos}           | dashboard.generos.update  | DashboardGenerosController@update    | auth.sentry2   |               |
+|        | PATCH /dashboard/generos/{generos}         |                           | DashboardGenerosController@update    | auth.sentry2   |               |
+|        | DELETE /dashboard/generos/{generos}        | dashboard.generos.destroy | DashboardGenerosController@destroy   | auth.sentry2   |               |
+|        | GET /users/login/{v1}/{v2}/{v3}/{v4}/{v5}  | login                     | UsersController@getLogin             |                |               |
+|        | POST /users/login/{v1}/{v2}/{v3}/{v4}/{v5} | post.login                | UsersController@postLogin            |                |               |
+|        | GET /users/logout/{v1}/{v2}/{v3}/{v4}/{v5} | logout                    | UsersController@getLogout            |                |               |
+|        | GET /users/{_missing}                      |                           | UsersController@missingMethod        |                |               |
+|        | GET /                                      |                           | Closure                              |                |               |
+|        | GET /dragndrop                             |                           | Closure                              |                |               |
++--------+--------------------------------------------+---------------------------+--------------------------------------+----------------+---------------+

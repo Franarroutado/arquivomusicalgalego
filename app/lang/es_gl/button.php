@@ -31,7 +31,8 @@ return array(
   'download' => 'Descargar',
 
   # Entity
-  'author' => 'Autor',
+  'author'   => 'Autor',
+  'genre'    => 'Xénero',
 
   'login' =>
   [ 'login'    => 'Login',

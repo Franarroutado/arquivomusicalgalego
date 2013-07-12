@@ -15,6 +15,20 @@ class AMG {
     }
 
     /**
+     * Return the localized string from a JSON structure.
+     * @param  JSON string $jsonString Contains a JSON structure
+     * @param  string $lang 
+     * @return string 
+     */
+    public static function getLangJSON($jsonString, $lang = null)
+    {
+        $currentLant = Config::get('app.config');
+        if (isset($lang)) $currentLant = $lang;
+
+        return json_decode($jsonString)->es_gl;
+    }
+
+    /**
      * Displays a flash message
      * @param  string $name
      * @return string
@@ -29,7 +43,7 @@ class AMG {
      * @return string 
      * 
      */
-    public static function displayRandomErrorValidation()
+    public static function displayRandomErrorValidation()   
     {
       $avaliableErrors = ['validation.validation_err1', 'validation.validation_err2', 'validation.validation_err3'];
       return static::returnRandomArrayValue($avaliableErrors);
