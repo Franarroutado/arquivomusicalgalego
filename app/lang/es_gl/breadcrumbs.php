@@ -8,6 +8,8 @@ return array(
   'genres'      =>   'Xéneros',
   'materials'   =>   'Materiales',
   'schools'     =>   'Centros',
+  'files'       =>   'Rexistros',
   'edit'        =>   'Editar',
   'create'      =>   'Crear',
+  'config'      =>   'Configuración',
 );

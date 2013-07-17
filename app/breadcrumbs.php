@@ -67,3 +67,25 @@ Breadcrumbs::register('centrosCreate', function($breadcrumbs) {
     $breadcrumbs->parent('centros');
     $breadcrumbs->push(trans('breadcrumbs.create'), route('dashboard.centros.create'));
 });
+
+//*************** FILES ***************//
+Breadcrumbs::register('registros', function($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push(trans('breadcrumbs.files'), route('dashboard.registros.index'));
+});
+
+Breadcrumbs::register('registrosEdit', function($breadcrumbs, $id) {
+    $breadcrumbs->parent('registros');
+    $breadcrumbs->push(trans('breadcrumbs.edit'), route('dashboard.registros.edit', $id));
+});
+
+Breadcrumbs::register('registrosCreate', function($breadcrumbs) {
+    $breadcrumbs->parent('registros');
+    $breadcrumbs->push(trans('breadcrumbs.create'), route('dashboard.registros.create'));
+});
+
+//*************** USERS ***************//
+Breadcrumbs::register('usuariosPropiedades', function($breadcrumbs) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push(trans('breadcrumbs.config'), route('dashboard.usuarios.config'));
+});

@@ -123,4 +123,13 @@ class DashboardAutoresController extends BaseController {
         return View::make('autores.index', compact('autores'));
     }
 
+    public function getJasoned()
+    {
+        $colAutores = Autore::all();
+        $respuesta;
+        foreach ($colAutores as $autor) {
+            $respuesta[$autor->id] = $autor->nombre;
+        }   
+        return Response::json($respuesta);
+    }
 }

@@ -1,34 +1,39 @@
 @extends('master')
 
-@section('breadcrumbs', Breadcrumbs::render('centros'))
+@section('breadcrumbs', Breadcrumbs::render('registros'))
 
 @section('content')
-<div class="btn-toolbar">
+  <div class="btn-toolbar">
   <div class="btn-group">
-      <a href="{{ route('dashboard.centros.create') }}" class="btn btn-primary"><i class="icon-plus"></i> @lang('button.new_entity', ['entity' => trans('button.school')])</a>
+      
+      <a href="{{ route('dashboard.registros.create') }}" class="btn btn-primary"><i class="icon-plus"></i> @lang('button.new_entity', ['entity' => trans('button.file')])</a>
   </div>
 </div>
 <div class="well">
-    {{ Form::open(['route' => 'dashboard.centros.index', 'method' => 'GET', 'id' => 'searchForm', 'class' => 'navbar-search .pull-right']) }}
+    {{ Form::open(['route' => 'dashboard.registros.index', 'method' => 'GET', 'id' => 'searchForm', 'class' => 'navbar-search .pull-right']) }}
       <input id="txtSearch" type="text" class="search-query" placeholder="@lang('button.search')">
     </form>
     <table class="table">
       <thead>
         <tr>
-          <th>@lang('app.schools.schoolname')</th>
+          <th>@lang('app.files.title')</th>
+          <th>@lang('app.files.author')</th>
+          <th>@lang('app.files.genre')</th>
           <th style="width: 26px;"></th>
         </tr>
       </thead>
       <tbody>
-          @if (count($centros) > 0)
-            @foreach ($centros as $centro)
+          @if (count($registros) > 0)
+            @foreach ($registros as $registro)
               <tr>
-                <td>{{ $centro->nombre }}</td> 
+                <td>{{ $registro->nombre }}</td> 
+                <td>{{ $registro->autore->nombre }}</td>
+                <td>{{ AMG::getLangJSON($registro->genero->lang) }}</td> 
                 <td>
                   <div class="btn-toolbar">
                     <div class="btn-group">
-                      <a class="btn btn-info" href="{{ route('dashboard.centros.edit', $centro->id) }}"><i class="icon-pencil"></i> </a>
-                      <a class="btn btn-info" href="#myModal" class="deleteLink" data-id="{{ $centro->id }}" role="button" data-toggle="modal"><i class="icon-remove"></i> </a>
+                      <a class="btn btn-info" href="{{ route('dashboard.registros.edit', $registro->id) }}"><i class="icon-pencil"></i> </a>
+                      <a class="btn btn-info" href="#myModal" class="deleteLink" data-id="{{ $registro->id }}" role="button" data-toggle="modal"><i class="icon-remove"></i> </a>
                     </div>
                   </div>
                 </td>
@@ -46,12 +51,12 @@
     </table>
 </div>
   <div class="btn-toolbar">
-    <a href="{{ route('dashboard.centros.create') }}" class="btn btn-primary"><i class="icon-plus"></i> @lang('button.new_entity', ['entity' => trans('button.school')])</a>
+    <a href="{{ route('dashboard.registros.create') }}" class="btn btn-primary"><i class="icon-plus"></i> @lang('button.new_entity', ['entity' => trans('button.file')])</a>
   <div class="btn-group">
   </div>
 </div>
 <div class="pagination">
-    {{ $centros->links() }}
+    {{ $registros->links() }}
 </div>
 
 <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -60,11 +65,11 @@
     <h3 id="myModalLabel">@lang('button.modal.barTitle')</h3>
   </div>
   <div class="modal-body">
-    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>@lang('button.modal.delteMsg', ['entity' => strtolower(trans('button.school'))])</p>
+    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>@lang('button.modal.delteMsg', ['entity' => strtolower(trans('button.genre'))])</p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">@lang('button.cancel')</button>
-    <a id="lnkDelete" class="btn btn-danger" data-method="DELETE"  href="{{ route('dashboard.centros.index')}}">@lang('button.delete')</a>
+    <a id="lnkDelete" class="btn btn-danger" data-method="DELETE"  href="{{ route('dashboard.registros.index')}}">@lang('button.delete')</a>
   </div>
 </div>
 {{-- This script is neccesary for allowing links use DELETE verb  --}}

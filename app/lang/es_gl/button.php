@@ -35,6 +35,7 @@ return array(
   'genre'    => 'Xénero',
   'material' => 'Material',
   'school'   => 'Centro',
+  'file'     => 'Rexistro',
 
   'login' =>
   [ 'login'    => 'Login',

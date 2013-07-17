@@ -133,4 +133,13 @@ class DashboardMaterialesController extends BaseController {
         return View::make('materiales.index', compact('materiales'));
     }
 
+    public function getJasoned()
+    {
+        $colMateriales = Material::all();
+        $respuesta;
+        foreach ($colMateriales as $material) {
+            $respuesta[$material->abrev] = AMG::getLangJSON($material->lang);
+        }   
+        return Response::json($respuesta);
+    }
 }

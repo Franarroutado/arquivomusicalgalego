@@ -28,6 +28,9 @@ class RemoveLangFromGenerosTable extends Migration {
     public function down()
     {
         Schema::table('generos', function(Blueprint $table) {
+            $table->dropColumn('lang');
+        });
+        Schema::table('generos', function(Blueprint $table) {
             $table->string('lang', 5);          
         });
     }

@@ -78,7 +78,9 @@ return array(
 	|
 	*/
 
-	'custom' => array(),
+	'custom' => array(
+		'fecha' => ['date_format' =>  'Non é un ano correcto.']
+	),
 
 	/*
 	|--------------------------------------------------------------------------

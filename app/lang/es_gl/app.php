@@ -10,33 +10,6 @@ return array(
     'rememberme' => 'Lémbrame',
     'signin' => 'Entrar',
   ],
-
-  // 'yes'        => 'Si',
-  // 'no'         => 'Non',
-  // 'or'         => 'ou',
-  // 'and'        => 'e',
-  
-  // 'error'      => 'Error',
-  // 'success'    => 'Éxito',
-  // 'warning'    => 'Coidado',
-  // 'info'       => 'Notificación',
-  
-  // 'male'       => 'Home',
-  // 'female'     => 'Muller',
-  
-  // 'unknown'    => 'Desconocido',
-  
-  // 'email'      => 'Email',
-  //   'must_login' => 'Debe logarse.',
-
-    // 'channel' => [
-    //       'mobile'   => 'Mobile',
-    //       'phone'    => 'Phone',
-    //       'skype'    => 'Skype',
-    //       'facebook' => 'Facebook',
-    //       'twitter'  => 'Twitter',
-    //       'email'    => 'Email',
-    //     ],
   'pagetitle' => 'Arquivo Musical Galego',
   'title' => 'AMG:',
   'msg' =>
@@ -45,7 +18,7 @@ return array(
     // 'select_a_business_first' => 'Select the business you want to enter',
     // 'welcome_to' => 'Welcome to :business',
     'forgot_your_password' => '¿Esquenceu a sua password?',
-    'no_results' => 'Non se han atopado resultados',
+    'no_results' => 'Non atopadose resultados',
   ],
   'authors' => 
   [ 'name' => 'Nome',
@@ -90,6 +63,21 @@ return array(
     'exists1'    => 'Ya existe uno igual. Pruebe con ', 
     'exists2'    => '2 por exemplo.',
     'newConfail' => 'Os dous campos de contacto deben estar cubertos.'],
+  'files' =>
+  [ 'title'      => 'Título',
+    'author'     => 'Autor',
+    'genre'      => 'Xénero',
+    'fixer'      => 'Arranxista',
+    'type'       => 'Tipo',
+    'date'       => 'Data',
+    'school'     => 'Centro',
+    'material'   => 'Descrición',
+    'location'   => 'Signatura',
+    'edition'    => 'Edición',
+    'comments'   => 'Comentarios',
+    'created'    => 'Novo rexistro creado.',
+    'updated'    => 'Rexistro actualizado.',
+    'deleted'    => 'Rexistro :name eliminado con éxito.',],
   '404' => 
   [ 'expresion1' => '¡Sapristi, caracoles, canastos!', 
     'expresion2' => '!Ups¡',

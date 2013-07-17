@@ -73,7 +73,7 @@
         // Load the component
         var genreComponent = '<div class="input-append">' +
               '<input class="span4" data-lang="{lang}"  value="{text}" disabled  id="appendedInputButton" type="text">' +
-              '<button class="btn deleteConctact" type="button">X</button></div>';
+              '<label class="btn deleteConctact"><i class="icon-remove"></i> </label></div>';
         return $.substitute(genreComponent, {text:genreString, lang:lang});
       }
 

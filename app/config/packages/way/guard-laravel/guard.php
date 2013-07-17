@@ -98,5 +98,6 @@ return array(
 			'style'		   => ':compressed'
 		)
 		*/
+		'coffeescript' => ['bare' => true]
 	)
 );

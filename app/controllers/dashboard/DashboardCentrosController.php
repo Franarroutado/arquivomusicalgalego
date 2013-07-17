@@ -129,4 +129,14 @@ class DashboardCentrosController extends BaseController {
         $centros = Centro::where('nombre', 'like' , '%'.$criteria.'%')->paginate(15);
         return View::make('centros.index', compact('centros'));
     }
+
+    public function getJasoned()
+    {
+        $colCentros = Centro::all();
+        $respuesta;
+        foreach ($colCentros as $centro) {
+            $respuesta[$centro->id] = $centro->nombre;
+        }   
+        return Response::json($respuesta);
+    }
 }

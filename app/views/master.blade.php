@@ -60,15 +60,14 @@
         <div class="navbar-inner">
             <ul class="nav pull-right">
                 
-                <li><a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">@lang('menu.settings')</a></li>
+                <li>{{ link_to_route('dashboard.usuarios.config', trans('menu.settings'), null, ['role' => 'button','class' => 'hidden-phone visible-tablet visible-desktop']) }}</li>
                 <li id="fat-menu" class="dropdown">
                     <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="icon-user"></i> {{ Sentry::getUser()->first_name  }}
                         <i class="icon-caret-down"></i>
                     </a>
-
                     <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="#">@lang('menu.settings')</a></li>
+                        <li>{{ link_to_route('dashboard.usuarios.config', trans('menu.settings'), null, ['tabindex' => '-1']) }}</li>
                         <li class="divider visible-phone"></li>
                         <li>{{ link_to_route('logout', trans('menu.signout'), null, ['tabindex' => -1]) }}</li>
                     </ul>

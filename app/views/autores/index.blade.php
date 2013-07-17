@@ -28,8 +28,12 @@
               <td>{{ $autor->nombre }}</td>
               <td>{{ $autor->user->first_name }}</td>
               <td>
-                  <a href="{{ route('dashboard.autores.edit', $autor->id) }}"><i class="icon-pencil"></i></a>
-                  <a href="#myModal" class="deleteLink" data-autor="{{ $autor->id }}" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <a class="btn btn-info" href="{{ route('dashboard.autores.edit', $autor->id) }}"><i class="icon-pencil"></i> </a>
+                    <a class="btn btn-info" href="#myModal" class="deleteLink" data-id="{{ $autor->id }}" role="button" data-toggle="modal"><i class="icon-remove"></i> </a>
+                  </div>
+                </div>
               </td>
             </tr>
           @endforeach

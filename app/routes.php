@@ -70,6 +70,18 @@ Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'], function()
 
   Route::resource('centros', 'DashboardCentrosController');
 
+  // Files management
+  Route::bind('registros', function($id, $route){
+    return Registro::with('user')->find($id);
+  });
+  Route::get('registros/{criteria}/search', ['as' => 'dashboard.registros.search', 'uses' => 'DashboardRegistrosController@getSearch'])
+        ->where('criteria', '[a-z ñáéíóúA-Z]+');
+  Route::resource('registros', 'DashboardRegistrosController');
+
+  // User management
+  Route::get('usuario/propiedades', ['as' => 'dashboard.usuarios.config', 'uses' => 'DashboardHomeController@getUserOptions']);
+  Route::post('usuario/propiedades', ['as' => 'dashboard.usuarios.configStore', 'uses' => 'DashboardHomeController@postUserOptions']);
+
 });
 
 /** ------------------------------------------
@@ -85,6 +97,40 @@ Route::get('/', function()
   return Redirect::route('dashboard');
 });
 
+/** ------------------------------------------
+ *  REST Services
+ *  ------------------------------------------
+ */
+Route::get('rest/materiales', ['as' => 'rest.materiales.all', 'uses' => 'DashboardMaterialesController@getJasoned']);
+Route::get('rest/autores', ['as' => 'rest.autores.all', 'uses' => 'DashboardAutoresController@getJasoned']);
+Route::get('rest/generos', ['as' => 'rest.generos.all', 'uses' => 'DashboardGenerosController@getJasoned']);
+Route::get('rest/centros', ['as' => 'rest.centros.all', 'uses' => 'DashboardCentrosController@getJasoned']);
+
+
 Route::get('dragndrop', function(){
   return View::make('dragndrop');
+});
+
+Route::get('migrar', function() {
+
+  $registros = Registro::all();
+  $registrosActualizados = 0;
+
+  foreach ($registros as $registro) {
+
+    $jsonedArray = [];
+    $arrayMaterial = explode(';', $registro->material);
+
+    foreach ($arrayMaterial as $material) {
+      $trimmedMaterial = trim($material);
+      $jsonedArray[$trimmedMaterial] = $trimmedMaterial;
+    }
+
+    // DB::table('registros')
+    //         ->where('id', $registro->id)
+    //         ->update(array('material' => json_encode($jsonedArray, JSON_UNESCAPED_UNICODE)));
+    $registrosActualizados ++;
+  }
+
+  echo $registrosActualizados . " registros actualizados!.";
 });

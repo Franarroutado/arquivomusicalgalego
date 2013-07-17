@@ -30,8 +30,12 @@
                 <td>{{ AMG::getLangJSON($material->lang) . " - " . implode(array_keys(json_decode($material->lang, true)), ", ") }}</td> 
                 <td>{{ $material->user->first_name }}</td>
                 <td>
-                    <a href="{{ route('dashboard.materiales.edit', $material->id) }}"><i class="icon-pencil"></i></a>
-                    <a href="#myModal" class="deleteLink" data-id="{{ $material->id }}" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+                  <div class="btn-toolbar">
+                    <div class="btn-group">
+                      <a class="btn btn-info" href="{{ route('dashboard.materiales.edit', $material->id) }}"><i class="icon-pencil"></i> </a>
+                      <a class="btn btn-info" href="#myModal" class="deleteLink" data-id="{{ $material->id }}" role="button" data-toggle="modal"><i class="icon-remove"></i> </a>
+                    </div>
+                  </div>
                 </td>
               </tr>
             @endforeach

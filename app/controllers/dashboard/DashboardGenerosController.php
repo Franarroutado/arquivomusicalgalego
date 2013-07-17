@@ -129,4 +129,14 @@ class DashboardGenerosController extends BaseController {
         return View::make('generos.index', compact('generos'));
     }
 
+    public function getJasoned()
+    {
+        $colGeneros = Genero::all();
+        $respuesta;
+        foreach ($colGeneros as $genero) {
+            $respuesta[$genero->id] = AMG::getLangJSON($genero->lang);
+        }   
+        return Response::json($respuesta);
+    }
+
 }
