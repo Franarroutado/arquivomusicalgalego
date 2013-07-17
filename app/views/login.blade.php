@@ -76,16 +76,16 @@
         <div class="block">
             <p class="block-heading">@lang('app.login.signin')</p>
             <div class="block-body">
-                {{ Form::open(['route' => 'post.login']) }}
+                {{ Form::open(array('route' => 'post.login')) }}
                     <label>@lang('app.login.username')                        
                          {{ AMG::displayErr($errors, 'username') }}
                     </label>
-                    {{ Form::text('username', null, ['class' => 'span12']) }}
+                    {{ Form::text('username', null, array('class' => 'span12')) }}
                     <label>@lang('app.login.password') 
                         {{ AMG::displayErr($errors, 'password') }}
                     </label>
-                    {{ Form::password('password', ['class' => 'span12']) }}
-                    {{ Form::submit( trans('app.login.signin'), ['class' => 'btn btn-primary pull-right']) }}
+                    {{ Form::password('password', array('class' => 'span12')) }}
+                    {{ Form::submit( trans('app.login.signin'), array('class' => 'btn btn-primary pull-right')) }}
                     <label class="remember-me">{{ Form::checkbox('rememberme') }} @lang('app.login.rememberme')</label>
                     <div class="clearfix"></div>
                 </form>

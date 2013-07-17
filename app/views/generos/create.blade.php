@@ -28,9 +28,9 @@
           </div>
           {{ Form::hidden('lang', '{}') }}
           {{ Form::label('username', trans('app.genres.created_by').":") }}
-          {{ Form::text('username', Sentry::getUser()->first_name, ['class' => 'input-xlarge', 'disabled']) }}
+          {{ Form::text('username', Sentry::getUser()->first_name, array('class' => 'input-xlarge', 'disabled')) }}
           {{ Form::label('created_at', trans('app.genres.created_at').":") }}
-          {{ Form::text('created_at',null, ['class' => 'input-xlarge', 'disabled']) }}
+          {{ Form::text('created_at',null, array('class' => 'input-xlarge', 'disabled')) }}
         </div>
         <div class="btn-toolbar">
           <button class="btn btn-primary"><i class="icon-save"></i> {{ trans('button.save') }}</button>

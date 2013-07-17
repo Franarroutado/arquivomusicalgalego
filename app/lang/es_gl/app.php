@@ -3,33 +3,29 @@
 /* App General Words */
 return array(
 
-  'login' => [
+  'login' => array(
     'title' => 'Acceso ó Xestor de Rexistros',
     'username' => 'Usuario',
     'password' => 'Contraseña',
     'rememberme' => 'Lémbrame',
     'signin' => 'Entrar',
-  ],
+  ),
   'pagetitle' => 'Arquivo Musical Galego',
   'title' => 'AMG:',
-  'msg' =>
-  [
-    // 'select_a_business_you_own_first' => 'Which of your businesses would you like to manage ?',
-    // 'select_a_business_first' => 'Select the business you want to enter',
-    // 'welcome_to' => 'Welcome to :business',
+  'msg' =>  array(
     'forgot_your_password' => '¿Esquenceu a sua password?',
     'no_results' => 'Non atopadose resultados',
-  ],
-  'authors' => 
-  [ 'name' => 'Nome',
+  ),
+  'authors' =>   array( 
+    'name' => 'Nome',
     'author'     => 'Autor',
     'created_by' => 'Creado por',
     'created_at' => 'Data creación',
     'created'    => 'Novo autor creado.',
     'updated'    => 'Autor actualizado.',
-    'deleted'    => 'Autor :name eliminado con éxito.' ],
-  'genres' => 
-  [ 'genre'      => 'Xénero',
+    'deleted'    => 'Autor :name eliminado con éxito.' ),
+  'genres' =>   array( 
+    'genre'      => 'Xénero',
     'lang'       => 'Traducción disponibles',
     'insertLang' => 'Engadir traducción',
     'created_by' => 'Creado por',
@@ -37,9 +33,9 @@ return array(
     'created'    => 'Novo xénero creado.',
     'updated'    => 'Xénero actualizado.',
     'deleted'    => 'Xénero :name eliminado con éxito.',
-    'newgenfail' => 'Verifique que está posto o Xénero e Linguaxe'], 
-  'materials' => 
-  [ 'abrev'      => 'Abreviatura Material',
+    'newgenfail' => 'Verifique que está posto o Xénero e Linguaxe'), 
+  'materials' => array( 
+    'abrev'      => 'Abreviatura Material',
     'lang'       => 'Nome material (un por linguaxe)', 
     'created_by' => 'Creado por',
     'created'    => 'Novo material creado.',
@@ -47,9 +43,9 @@ return array(
     'deleted'    => 'Material :name eliminado con éxito.',
     'insertLang' => 'Engadir traducción',
     'created_at' => 'Data creación',
-    'newgenfail' => 'Verifique que está posto o Xénero e Linguaxe' ],
-  'schools' => 
-  [ 'schoolname' => 'Nombre del centro',
+    'newgenfail' => 'Verifique que está posto o Xénero e Linguaxe' ),
+  'schools' => array( 
+    'schoolname' => 'Nombre del centro',
     'abrev'      => 'Abreviatura',
     'body'       => 'Descripción', 
     'contact'    => 'Contacto (mail, tlf, móvil, etc)',
@@ -62,9 +58,9 @@ return array(
     'deleted'    => 'Centro :name eliminado con éxito.',
     'exists1'    => 'Ya existe uno igual. Pruebe con ', 
     'exists2'    => '2 por exemplo.',
-    'newConfail' => 'Os dous campos de contacto deben estar cubertos.'],
-  'files' =>
-  [ 'title'      => 'Título',
+    'newConfail' => 'Os dous campos de contacto deben estar cubertos.'),
+  'files' => array( 
+    'title'      => 'Título',
     'author'     => 'Autor',
     'genre'      => 'Xénero',
     'fixer'      => 'Arranxista',
@@ -77,12 +73,12 @@ return array(
     'comments'   => 'Comentarios',
     'created'    => 'Novo rexistro creado.',
     'updated'    => 'Rexistro actualizado.',
-    'deleted'    => 'Rexistro :name eliminado con éxito.',],
-  '404' => 
-  [ 'expresion1' => '¡Sapristi, caracoles, canastos!', 
+    'deleted'    => 'Rexistro :name eliminado con éxito.',),
+  '404' => array( 
+    'expresion1' => '¡Sapristi, caracoles, canastos!', 
     'expresion2' => '!Ups¡',
     'expresion3' => '!Ay¡',
     'message'    => 'Esta páxina non existe.',
     'gohome'     => 'Volver ó inicio.'
-  ]
+  )
 );

@@ -37,11 +37,11 @@ return array(
   'school'   => 'Centro',
   'file'     => 'Rexistro',
 
-  'login' =>
-  [ 'login'    => 'Login',
+  'login' => array(
+    'login'    => 'Login',
     'signup'   => 'Signup',
-    'forgot'   => 'Esquenceu contraseña',  ],
-  'modal' =>
-  [ 'barTitle' => 'Confirmación de borrado',
-    'delteMsg' => 'Seguro que desexa eliminar o :entity']
+    'forgot'   => 'Esquenceu contraseña',  ),
+  'modal' => array(
+    'barTitle' => 'Confirmación de borrado',
+    'delteMsg' => 'Seguro que desexa eliminar o :entity')
 );

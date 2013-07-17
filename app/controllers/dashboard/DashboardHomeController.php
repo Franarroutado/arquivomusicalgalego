@@ -13,7 +13,17 @@ class DashboardHomeController extends BaseController {
     $users          = json_encode(DB::table('users')->lists('email', 'id'), JSON_UNESCAPED_UNICODE);
     $groups         = json_encode(DB::table('groups')->lists('name','id'), JSON_UNESCAPED_UNICODE);
     $centros        = Centro::all();
-    return View::make('users.configuration', compact('users', 'centros', 'groups', 'users_groups'));
+
+    $user = Sentry::getUser();
+    $isSuperUser = $user->isSuperUser();
+
+    $groups = $user->getGroups();
+    $arrGroupName=[];
+    foreach ($groups as $group) {
+      $arrGroupName[]=$group->name;
+    }
+
+    return View::make('users.configuration', compact('users', 'centros', 'groups', 'users_groups', 'isSuperUser', 'arrGroupName'));
   }
 
   public function postUserOptions()

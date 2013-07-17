@@ -47,7 +47,7 @@
     
     <div class="row-fluid">
       <div class="http-error">
-        <h1>{{ trans(AMG::returnRandomArrayValue(['app.404.expresion1', 'app.404.expresion2', 'app.404.expresion3'])) }}</h1>
+        <h1>{{ trans(AMG::returnRandomArrayValue(array('app.404.expresion1', 'app.404.expresion2', 'app.404.expresion3'))) }}</h1>
         <p class="info">{{ trans('app.404.message')  }} <br/>{{ HTML::image('assets/img/404/'.rand(1,3).'.gif') }}</p>
 
         <p><i class="icon-home"></i></p>

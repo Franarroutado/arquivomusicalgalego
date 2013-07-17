@@ -15,11 +15,11 @@
         </div>
         <div class="well">
           {{ Form::label('nombre', trans('app.schools.schoolname').":").AMG::displayErr($errors, 'nombre') }}
-          {{ Form::text('nombre',null, ['class' => 'input-xlarge']) }}
+          {{ Form::text('nombre',null, array('class' => 'input-xlarge')) }}
           {{ Form::label('abrev', trans('app.schools.abrev').":").AMG::displayErr($errors, 'abrev') }}
-          {{ Form::text('abrev',null, ['class' => 'input-xlarge']) }}
+          {{ Form::text('abrev',null, array('class' => 'input-xlarge')) }}
           {{ Form::label('cuerpo', trans('app.schools.body').":").AMG::displayErr($errors, 'cuerpo') }}
-          {{ Form::textarea('cuerpo',null, ['class' => 'ckeditor']) }}
+          {{ Form::textarea('cuerpo',null, array('class' => 'ckeditor')) }}
           {{ Form::label('contact', trans('app.schools.contact').":").AMG::displayErr($errors, 'contact') }}
           <div class="well">
             <div id="newGenreContainer">
@@ -32,11 +32,11 @@
             <hr>
             <div id="genreContainer"></div>
           </div>
-          {{ Form::hidden('contacto', '{}', ['id' => 'contacto']) }}
+          {{ Form::hidden('contacto', '{}', array('id' => 'contacto')) }}
           {{ Form::label('username', trans('app.schools.created_by').":") }}
-          {{ Form::text('username', Sentry::getUser()->first_name, ['class' => 'input-xlarge', 'disabled']) }}
+          {{ Form::text('username', Sentry::getUser()->first_name, array('class' => 'input-xlarge', 'disabled')) }}
           {{ Form::label('created_at', trans('app.schools.created_at').":") }}
-          {{ Form::text('created_at',null, ['class' => 'input-xlarge', 'disabled']) }}
+          {{ Form::text('created_at',null, array('class' => 'input-xlarge', 'disabled')) }}
         </div>
         <div class="btn-toolbar">
           <button class="btn btn-primary"><i class="icon-save"></i> {{ trans('button.save') }}</button>

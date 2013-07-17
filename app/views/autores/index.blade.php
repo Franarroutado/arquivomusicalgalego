@@ -6,11 +6,11 @@
   <div class="btn-toolbar">
   <div class="btn-group">
       
-      <a href="{{ route('dashboard.autores.create') }}" class="btn btn-primary"><i class="icon-plus"></i> @lang('button.new_entity', ['entity' => trans('button.author')])</a>
+      <a href="{{ route('dashboard.autores.create') }}" class="btn btn-primary"><i class="icon-plus"></i> @lang('button.new_entity', array('entity' => trans('button.author')))</a>
   </div>
 </div>
 <div class="well">
-    {{ Form::open(['route' => 'dashboard.autores.index', 'method' => 'GET', 'id' => 'searchForm', 'class' => 'navbar-search .pull-right']) }}
+    {{ Form::open(array('route' => 'dashboard.autores.index', 'method' => 'GET', 'id' => 'searchForm', 'class' => 'navbar-search .pull-right')) }}
       <input id="txtSearch" type="text" class="search-query" placeholder="@lang('button.search')">
     </form>
     <table class="table">
@@ -49,7 +49,7 @@
     </table>
 </div>
   <div class="btn-toolbar">
-    <a href="{{ route('dashboard.autores.create') }}" class="btn btn-primary"><i class="icon-plus"></i> @lang('button.new_entity', ['entity' => trans('button.author')])</a>
+    <a href="{{ route('dashboard.autores.create') }}" class="btn btn-primary"><i class="icon-plus"></i> @lang('button.new_entity', array('entity' => trans('button.author')))</a>
   <div class="btn-group">
   </div>
 </div>
@@ -63,7 +63,7 @@
     <h3 id="myModalLabel">@lang('button.modal.barTitle')</h3>
   </div>
   <div class="modal-body">
-    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>@lang('button.modal.delteMsg', ['entity' => strtolower(trans('button.author'))])</p>
+    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>@lang('button.modal.delteMsg', array('entity' => strtolower(trans('button.author'))))</p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">@lang('button.cancel')</button>

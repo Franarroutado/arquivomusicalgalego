@@ -79,7 +79,7 @@ return array(
 	*/
 
 	'custom' => array(
-		'fecha' => ['date_format' =>  'Non é un ano correcto.']
+		'fecha' => array('date_format' =>  'Non é un ano correcto.')
 	),
 
 	/*

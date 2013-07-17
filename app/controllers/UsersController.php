@@ -29,13 +29,13 @@ class UsersController extends BaseController {
   {
     $validator = Validator::make(
       Input::all(),
-      ['username' => ['required', 'email'], 'password' => 'required']
+      array('username' => array('required', 'email'), 'password' => 'required')
     );
     if ($validator->passes()) 
     {
       $message = '';
       try {
-        $myCredentials = ['email' => Input::get('username'), 'password' => Input::get('password')];
+        $myCredentials = array('email' => Input::get('username'), 'password' => Input::get('password'));
         $user = Sentry::authenticate($myCredentials, Input::get('rememberme') ? true : false);
       } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
           $message = trans('validation.sentry2.wrong_password');
@@ -47,7 +47,7 @@ class UsersController extends BaseController {
 
       if (strlen($message)>0) return Redirect::back()->withInput()->with('error', $message);
 
-      return Redirect::route('dashboard')->with('success', trans('validation.sentry2.autenticado' ,['username' => Sentry::getUser()->first_name]));
+      return Redirect::route('dashboard')->with('success', trans('validation.sentry2.autenticado' , array('username' => Sentry::getUser()->first_name)));
     }
 
     return Redirect::back()

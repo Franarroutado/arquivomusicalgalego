@@ -61,7 +61,7 @@ class DashboardAutoresController extends BaseController {
      */
     public function show($id)
     {
-        return "Estoy en el show";
+        //
     }
 
     /**

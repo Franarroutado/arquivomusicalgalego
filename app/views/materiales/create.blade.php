@@ -15,7 +15,7 @@
         </div>
         <div class="well">
           {{ Form::label('abrev', trans('app.materials.abrev').":").AMG::displayErr($errors, 'abrev') }}
-          {{ Form::text('abrev', null, ['class' => 'input-xlarge']) }} 
+          {{ Form::text('abrev', null, array('class' => 'input-xlarge')) }} 
           {{ Form::label('lang', trans('app.materials.lang').":") . AMG::displayErr($errors, 'lang') }}
           <div class="well">
             <div id="newGenreContainer" style="height: 30px; width: 360px; margin-bottom:5px;">
@@ -30,9 +30,9 @@
           </div>
           {{ Form::hidden('lang', '{}') }}
           {{ Form::label('username', trans('app.materials.created_by').":") }}
-          {{ Form::text('username', Sentry::getUser()->first_name, ['class' => 'input-xlarge', 'disabled']) }}
+          {{ Form::text('username', Sentry::getUser()->first_name, array('class' => 'input-xlarge', 'disabled')) }}
           {{ Form::label('created_at', trans('app.materials.created_at').":") }}
-          {{ Form::text('created_at',null, ['class' => 'input-xlarge', 'disabled']) }}
+          {{ Form::text('created_at',null, array('class' => 'input-xlarge', 'disabled')) }}
         </div>
         <div class="btn-toolbar">
           <button class="btn btn-primary"><i class="icon-save"></i> {{ trans('button.save') }}</button>

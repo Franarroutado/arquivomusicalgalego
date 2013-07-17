@@ -45,7 +45,7 @@ class AMG {
      */
     public static function displayRandomErrorValidation()   
     {
-      $avaliableErrors = ['validation.validation_err1', 'validation.validation_err2', 'validation.validation_err3'];
+      $avaliableErrors = array('validation.validation_err1', 'validation.validation_err2', 'validation.validation_err3');
       return static::returnRandomArrayValue($avaliableErrors);
     }
 

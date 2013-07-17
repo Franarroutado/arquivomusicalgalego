@@ -16,7 +16,7 @@
     </div>
     <div class="well">
       {{ Form::label('abrev', trans('app.materials.abrev').":").AMG::displayErr($errors, 'abrev') }}
-      {{ Form::text('abrev', null, ['class' => 'input-xlarge']) }} 
+      {{ Form::text('abrev', null, array('class' => 'input-xlarge')) }} 
       {{ Form::label('lang', trans('app.materials.lang').":") . AMG::displayErr($errors, 'lang') }}
       <div class="well">
         <div id="newGenreContainer" style="height: 30px; width: 360px; margin-bottom:5px;">
@@ -31,9 +31,9 @@
       </div>
       {{ Form::hidden('lang') }}
       {{ Form::label('user.first_name', trans('app.materials.created_by').":") }}
-      {{ Form::text('user.first_name', null, ['class' => 'input-xlarge', 'disabled']) }} 
+      {{ Form::text('user.first_name', null, array('class' => 'input-xlarge', 'disabled')) }} 
       {{ Form::label('created_at', trans('app.materials.created_at').":") }}
-      {{ Form::text('created_at',null, ['class' => 'input-xlarge', 'disabled']) }}
+      {{ Form::text('created_at',null, array('class' => 'input-xlarge', 'disabled')) }}
     </div>
     <div class="btn-toolbar">
       <button class="btn btn-primary"><i class="icon-save"></i> @lang('button.save')</button>
@@ -50,7 +50,7 @@
     <h3 id="myModalLabel">@lang('button.modal.barTitle')</h3>
   </div>
   <div class="modal-body">
-    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>@lang('button.modal.delteMsg', ['entity' => strtolower(trans('button.material'))])</p>
+    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>@lang('button.modal.delteMsg', array('entity' => strtolower(trans('button.material'))))</p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">@lang('button.cancel')</button>

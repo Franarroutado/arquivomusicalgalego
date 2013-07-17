@@ -24,25 +24,25 @@
         </div>
         <div class="well">
               {{ Form::label('nombre', trans('app.files.title').":").AMG::displayErr($errors, 'nombre') }}
-              {{ Form::text('nombre', null, ['class' => 'input-xlarge']) }}
+              {{ Form::text('nombre', null, array('class' => 'input-xlarge')) }}
               {{ Form::label('autore_id', trans('app.files.author').":").AMG::displayErr($errors, 'autore_id') }}
-              {{ Form::text('autor', null, ['autocomplete'=>'off', 'class' => 'input-xlarge', 'id' => 'autor']) }}
+              {{ Form::text('autor', null, array('autocomplete'=>'off', 'class' => 'input-xlarge', 'id' => 'autor')) }}
               {{ Form::hidden('autore_id') }}
               {{ Form::label('genero_id', trans('app.files.genre').":").AMG::displayErr($errors, 'genero_id') }}
-              {{ Form::text('genero', null, ['autocomplete'=>'off', 'class' => 'input-xlarge', 'id' => 'genero']) }}
+              {{ Form::text('genero', null, array('autocomplete'=>'off', 'class' => 'input-xlarge', 'id' => 'genero')) }}
               {{ Form::hidden('genero_id') }}
               {{ Form::label('arreglista', trans('app.files.fixer').":") }}
               {{ Form::checkbox('arreglista') }}
               {{ Form::label('tipo', trans('app.files.type').":") }}
-              {{ Form::select('tipo', ['' => 'Elixa un tipo',
+              {{ Form::select('tipo', array('' => 'Elixa un tipo',
                                         'ORIXINAL' => 'ORIXINAL',
                                         'COPIA' => 'COPIA',
                                         'ARRANXO' => 'ARRANXO',
-                                        'TRANSCRICIÓN' => 'TRANSCRICIÓN', ]) }} 
+                                        'TRANSCRICIÓN' => 'TRANSCRICIÓN', )) }} 
               {{ Form::label('fecha', trans('app.files.date').":").AMG::displayErr($errors, 'fecha') }}
-              {{ Form::text('fecha', null, ['class' => 'input-xlarge']) }}
+              {{ Form::text('fecha', null, array('class' => 'input-xlarge')) }}
               {{ Form::label('centro_id', trans('app.files.school').":").AMG::displayErr($errors, 'centro_id') }}
-              {{ Form::text('centro', null, ['autocomplete'=>'off','class' => 'input-xxlarge', 'id' => 'centro']) }}
+              {{ Form::text('centro', null, array('autocomplete'=>'off','class' => 'input-xxlarge', 'id' => 'centro')) }}
               {{ Form::hidden('centro_id') }}
               {{ Form::label('material', trans('app.files.material').":").AMG::displayErr($errors, 'lang') }}
               {{ Form::textarea('material') }}
@@ -72,15 +72,15 @@
                 <ul id="materialContainer"></ul>
               </div>
               {{ Form::label('fondo', trans('app.files.location').":") }}
-              {{ Form::text('fondo', null, ['class' => 'input-xxlarge']) }}
+              {{ Form::text('fondo', null, array('class' => 'input-xxlarge')) }}
               {{ Form::label('edicion', trans('app.files.edition').":") }}
-              {{ Form::text('edicion', null, ['class' => 'input-xxlarge']) }}
+              {{ Form::text('edicion', null, array('class' => 'input-xxlarge')) }}
               {{ Form::label('comentarios', trans('app.files.comments').":") }}
-              {{ Form::textarea('comentarios', null, ['class' => 'input-xlarge', 'class' => 'ckeditor']) }}
+              {{ Form::textarea('comentarios', null, array('class' => 'input-xlarge', 'class' => 'ckeditor')) }}
               {{ Form::label('username', trans('app.genres.created_by').":") }}
-              {{ Form::text('username', Sentry::getUser()->first_name, ['class' => 'input-xlarge', 'disabled']) }}
+              {{ Form::text('username', Sentry::getUser()->first_name, array('class' => 'input-xlarge', 'disabled')) }}
               {{ Form::label('created_at', trans('app.genres.created_at').":") }}
-              {{ Form::text('created_at',null, ['class' => 'input-xlarge', 'disabled']) }}
+              {{ Form::text('created_at',null, array('class' => 'input-xlarge', 'disabled')) }}
         </div>
         <div class="btn-toolbar">
           <button class="btn btn-primary"><i class="icon-save"></i> {{ trans('button.save') }}</button>

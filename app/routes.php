@@ -26,13 +26,13 @@ Route::model('centro', 'Centro');
  *  ------------------------------------------
  */
 
-Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'], function()
+Route::group(array('prefix' => 'dashboard', 'before'=>'auth.sentry2'), function()
 {
   // Dashboard
-  Route::get('/', ['as' => 'dashboard', 'uses' => 'DashboardHomeController@getIndex']);
+  Route::get('/', array('as' => 'dashboard', 'uses' => 'DashboardHomeController@getIndex'));
 
   // Authors management
-  Route::get('autores/{criteria}/search', ['as' => 'dashboard.autores.search', 'uses' => 'DashboardAutoresController@getSearch'])
+  Route::get('autores/{criteria}/search', array('as' => 'dashboard.autores.search', 'uses' => 'DashboardAutoresController@getSearch'))
         ->where('criteria', '[a-z ñáéíóúA-Z]+');
 
   Route::bind('autores', function($id, $route){
@@ -45,7 +45,7 @@ Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'], function()
     return Genero::with('user')->find($id);
   });
 
-  Route::get('generos/{criteria}/search', ['as' => 'dashboard.generos.search', 'uses' => 'DashboardGenerosController@getSearch'])
+  Route::get('generos/{criteria}/search', array('as' => 'dashboard.generos.search', 'uses' => 'DashboardGenerosController@getSearch'))
         ->where('criteria', '[a-z ñáéíóúA-Z]+');
 
   Route::resource('generos', 'DashboardGenerosController');
@@ -55,7 +55,7 @@ Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'], function()
     return Material::with('user')->find($id);
   });
 
-  Route::get('materiales/{criteria}/search', ['as' => 'dashboard.materiales.search', 'uses' => 'DashboardMaterialesController@getSearch'])
+  Route::get('materiales/{criteria}/search', array('as' => 'dashboard.materiales.search', 'uses' => 'DashboardMaterialesController@getSearch'))
         ->where('criteria', '[a-z ñáéíóúA-Z]+');
 
   Route::resource('materiales', 'DashboardMaterialesController');
@@ -65,7 +65,7 @@ Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'], function()
     return Centro::with('user')->find($id);
   });
 
-  Route::get('centros/{criteria}/search', ['as' => 'dashboard.centros.search', 'uses' => 'DashboardCentrosController@getSearch'])
+  Route::get('centros/{criteria}/search', array('as' => 'dashboard.centros.search', 'uses' => 'DashboardCentrosController@getSearch'))
         ->where('criteria', '[a-z ñáéíóúA-Z]+');
 
   Route::resource('centros', 'DashboardCentrosController');
@@ -74,13 +74,13 @@ Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'], function()
   Route::bind('registros', function($id, $route){
     return Registro::with('user')->find($id);
   });
-  Route::get('registros/{criteria}/search', ['as' => 'dashboard.registros.search', 'uses' => 'DashboardRegistrosController@getSearch'])
+  Route::get('registros/{criteria}/search', array('as' => 'dashboard.registros.search', 'uses' => 'DashboardRegistrosController@getSearch'))
         ->where('criteria', '[a-z ñáéíóúA-Z]+');
   Route::resource('registros', 'DashboardRegistrosController');
 
   // User management
-  Route::get('usuario/propiedades', ['as' => 'dashboard.usuarios.config', 'uses' => 'DashboardHomeController@getUserOptions']);
-  Route::post('usuario/propiedades', ['as' => 'dashboard.usuarios.configStore', 'uses' => 'DashboardHomeController@postUserOptions']);
+  Route::get('usuario/propiedades', array('as' => 'dashboard.usuarios.config', 'uses' => 'DashboardHomeController@getUserOptions'));
+  Route::post('usuario/propiedades', array('as' => 'dashboard.usuarios.configStore', 'uses' => 'DashboardHomeController@postUserOptions'));
 
 });
 
@@ -90,7 +90,7 @@ Route::group(['prefix' => 'dashboard', 'before'=>'auth.sentry2'], function()
  */
 
 // User RESTful Routes (Login, Logout, Register, etc)
-Route::controller('users', 'UsersController', ['getLogin' => 'login', 'postLogin' => 'post.login','getLogout' => 'logout']);
+Route::controller('users', 'UsersController', array('getLogin' => 'login', 'postLogin' => 'post.login','getLogout' => 'logout'));
 
 Route::get('/', function()
 {
@@ -101,10 +101,10 @@ Route::get('/', function()
  *  REST Services
  *  ------------------------------------------
  */
-Route::get('rest/materiales', ['as' => 'rest.materiales.all', 'uses' => 'DashboardMaterialesController@getJasoned']);
-Route::get('rest/autores', ['as' => 'rest.autores.all', 'uses' => 'DashboardAutoresController@getJasoned']);
-Route::get('rest/generos', ['as' => 'rest.generos.all', 'uses' => 'DashboardGenerosController@getJasoned']);
-Route::get('rest/centros', ['as' => 'rest.centros.all', 'uses' => 'DashboardCentrosController@getJasoned']);
+Route::get('rest/materiales', array('as' => 'rest.materiales.all', 'uses' => 'DashboardMaterialesController@getJasoned'));
+Route::get('rest/autores', array('as' => 'rest.autores.all', 'uses' => 'DashboardAutoresController@getJasoned'));
+Route::get('rest/generos', array('as' => 'rest.generos.all', 'uses' => 'DashboardGenerosController@getJasoned'));
+Route::get('rest/centros', array('as' => 'rest.centros.all', 'uses' => 'DashboardCentrosController@getJasoned'));
 
 
 Route::get('dragndrop', function(){
@@ -118,7 +118,7 @@ Route::get('migrar', function() {
 
   foreach ($registros as $registro) {
 
-    $jsonedArray = [];
+    $jsonedArray = array();
     $arrayMaterial = explode(';', $registro->material);
 
     foreach ($arrayMaterial as $material) {

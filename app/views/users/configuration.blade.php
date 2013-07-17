@@ -9,9 +9,9 @@
     #compAddMaterial input {
       margin-left: 0px;
     }
-    ul.container li {
+    /*ul.container li {
       display: block;
-    }
+    }*/
 </style>
 <div class="container-fluid">
   <div class="row-fluid">
@@ -23,10 +23,9 @@
       <div class="well">
         {{--DEFAULT LANGUAGE--}}
         <label for="txtLang">Linguaxe por defecto</label>
-        {{ Form::text('txtLang', null, ['class'=>'input-small']) }}
+        {{ Form::text('txtLang', null, array('class'=>'input-small')) }}
         
-        <?php $user = Sentry::getUser() ?>
-        @if ($user->isSuperUser())
+        @if ($isSuperUser)
         {{-- FOLLOWING CODE IS SUPER USER ONLY --}}
           <label for="centros">Centros</label>
           {{ Form::hidden('centros') }}
@@ -41,7 +40,7 @@
               <button id="btnAddCentro" class="btn" type="button"><i class="icon-plus-sign"></i></button>
             </div> {{-- compAddCentros  --}}
             <hr>
-            <ul id="contenedorCentros"></ul>
+            <ul class="unstyled" id="contenedorCentros"></ul>
           </div>
           <label for="centros">Grupos</label>
           <div class="well">
@@ -51,11 +50,18 @@
             <button id="btnAddGrupo" class="btn" type="button"><i class="icon-plus-sign"></i></button>
           </div> {{-- compAddMaterial  --}}
           <hr>
-          {{ Form::hidden('txtGrupos', $users_groups, ['id' => 'txtGrupos']) }}
-          <ul id="contenedorGrupos" class="container"></ul>
+          {{ Form::hidden('txtGrupos', $users_groups, array('id' => 'txtGrupos')) }}
+          <ul class="unstyled" id="contenedorGrupos" class="container"></ul>
         </div>
         @else
-          Mostra grupos y centros
+
+          <dl>
+            <dt>Roles asignados</dt>
+            @foreach ($arrGroupName as $groupName)
+              <dd>{{$groupName}}</dd>
+            @endforeach
+          </dl>
+
         @endif
       </div>
       <div class="btn-toolbar">
