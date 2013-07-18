@@ -9,9 +9,16 @@
     #compAddMaterial input {
       margin-left: 0px;
     }
-    /*ul.container li {
-      display: block;
-    }*/
+    #contenedorCentros li:first-child input{
+      -moz-box-shadow:    inset 0 0 3px rgb(81, 163, 81);
+      -webkit-box-shadow: inset 0 0 3px rgb(81, 163, 81);
+      box-shadow:         inset 0 0 3px rgb(81, 163, 81);
+    }
+    #contenedorCentros li:first-child:hover input{
+      -moz-box-shadow:    inset 0 0 10px rgb(81, 163, 81);
+      -webkit-box-shadow: inset 0 0 10px rgb(81, 163, 81);
+      box-shadow:         inset 0 0 10px rgb(81, 163, 81);
+    }
 </style>
 <div class="container-fluid">
   <div class="row-fluid">
@@ -72,6 +79,7 @@
     {{ Form::close() }}
   </div> {{--row-fluid--}}
 </div> {{--container-fluid--}}
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script>
   $(document).ready(function(){
 
@@ -88,7 +96,6 @@
               return $1 in sub ? sub[$1] : $0;
           });
       };
-
       // Load user combo
       var $cbmUsuarios = $('#cbmUsuarios');
       $.each(colUsuarios, function(key, value){
@@ -101,6 +108,15 @@
       });
 
       loadUsersGroupsConfiguration();
+      enableDragnDrop();
+    }
+
+    function enableDragnDrop()
+    {
+      $('#contenedorCentros').sortable({
+        revert:true,
+        // stop: reorderJsonItems
+      });
     }
 
     function loadUsersGroupsConfiguration()
@@ -129,7 +145,6 @@
         '<input class="span4" data-key="{key}" value="{value}" disabled type="text"></div></li>';
       return $.substitute(newComponent, {key:key, value:value});
     }
-
 
     $('#btnAddGrupo').on('click', function() {
       var $cbmUsuarios = $('#cbmUsuarios');
@@ -163,16 +178,16 @@
       var txtIdCentro = $cbmCentros.find(':selected').attr('value');
 
       if (txtIdCentro.length ==0 ) return alert('Seleccione');
-
-      console.log(colCentros);
-      var arrCentros = colCentros['centros'].split(',');
+ 
+      arrCentros = [];
+      if (colCentros['centros'].length) arrCentros = colCentros['centros'].split(',');
       if ($.inArray(txtIdCentro, arrCentros) == -1) 
       {
         arrCentros.push(txtIdCentro);
         colCentros['centros'] = arrCentros.join(',');
       }
-      console.log(colCentros);
-      //$('#contenedorCentros').append(buildComponentWithButton(txtIdCentro, txtNombreCentro));
+
+      $('#contenedorCentros').append(buildComponentWithButton(txtIdCentro, txtNombreCentro));
 
     });
 

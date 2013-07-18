@@ -134,3 +134,7 @@ Route::get('migrar', function() {
 
   echo $registrosActualizados . " registros actualizados!.";
 });
+
+Route::get('buscador', function(){
+  return View::make('buscador');
+});

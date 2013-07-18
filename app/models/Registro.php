@@ -4,15 +4,15 @@ class Registro extends BaseModel {
   
     protected $guarded = array();
 
-    public static $rules = [
-      'nombre'      => ['required'],
-      'autore_id'   => ['required', 'numeric'],
-      'genero_id'   => ['required', 'numeric'],
+    public static $rules = array(
+      'nombre'      => array('required'),
+      'autore_id'   => array('required', 'numeric'),
+      'genero_id'   => array('required', 'numeric'),
       'tipo'        => 'required',
-      'centro_id'   => ['required', 'numeric'],
+      'centro_id'   => array('required', 'numeric'),
       'fecha'       => 'date_format:Y',
-      'user_id'     => ['required', 'numeric']
-    ]; 
+      'user_id'     => array('required', 'numeric')
+    ); 
 
 
     // Relationsship One To One (one Autore corresponds one User)

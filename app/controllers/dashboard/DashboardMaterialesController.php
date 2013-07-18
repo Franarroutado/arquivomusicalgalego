@@ -41,10 +41,10 @@ class DashboardMaterialesController extends BaseController {
         $langField = Input::get('lang');
         if ($langField === '{}') $langField = '';
 
-        $material = new Material(
-        [ 'abrev' => Input::get('abrev'),
+        $material = new Material( array(
+          'abrev' => Input::get('abrev'),
           'lang'  => $langField,
-          'user_id' => Sentry::getUser()->id ]);
+          'user_id' => Sentry::getUser()->id ));
 
         if ($material->save()) {
             return Redirect::route('dashboard.materiales.index')
@@ -113,7 +113,7 @@ class DashboardMaterialesController extends BaseController {
     public function destroy($material)
     {
         if ($material->delete()) return Redirect::route('dashboard.materiales.index')
-            ->with('success', trans('app.materials.deleted', ['name' => $material->nombre]));
+            ->with('success', trans('app.materials.deleted', array('name' => $material->nombre)));
 
         return Redirect::back()
             ->withErrors($material->errors)

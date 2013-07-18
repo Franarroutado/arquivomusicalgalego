@@ -41,12 +41,12 @@ class DashboardCentrosController extends BaseController {
         $contactField = Input::get('contacto');
         if ($contactField === '{}') $contactField = '';
 
-        $centro = new Centro(
-        [ 'nombre'  => Input::get('nombre'),
+        $centro = new Centro( array( 
+          'nombre'  => Input::get('nombre'),
           'abrev'   => Input::get('abrev'),
           'cuerpo'  => Input::get('cuerpo'),
           'contacto'=> $contactField,
-          'user_id' => Sentry::getUser()->id ]);
+          'user_id' => Sentry::getUser()->id ));
 
         if ($centro->save()) {
             return Redirect::route('dashboard.centros.index')

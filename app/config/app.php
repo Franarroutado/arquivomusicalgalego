@@ -117,6 +117,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Way\Console\GuardLaravelServiceProvider',
 		'DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider',
+		'Baum\BaumServiceProvider',
 	),
 
 	/*

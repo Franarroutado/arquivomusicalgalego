@@ -98,6 +98,6 @@ return array(
 			'style'		   => ':compressed'
 		)
 		*/
-		'coffeescript' => ['bare' => true]
+		'coffeescript' => array('bare' => true)
 	)
 );

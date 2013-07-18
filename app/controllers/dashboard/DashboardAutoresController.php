@@ -39,8 +39,8 @@ class DashboardAutoresController extends BaseController {
     public function store()
     {
         $author = new Autore(
-        [ 'nombre'  => Input::get('nombre'),
-          'user_id' => Sentry::getUser()->id ]);
+        array( 'nombre'  => Input::get('nombre'),
+          'user_id' => Sentry::getUser()->id ));
 
         if ($author->save()) {
             return Redirect::route('dashboard.autores.index')
@@ -105,7 +105,7 @@ class DashboardAutoresController extends BaseController {
     public function destroy($autore)
     {
         if ($autore->delete()) return Redirect::route('dashboard.autores.index')
-            ->with('success', trans('app.authors.deleted', ['name' => $autore->nombre]));
+            ->with('success', trans('app.authors.deleted', array('name' => $autore->nombre)));
 
         return Redirect::back()
             ->withErrors($autore->errors)

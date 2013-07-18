@@ -7,11 +7,11 @@ class Material extends BaseModel {
 
     protected $guarded = array();
 
-    public static $rules = [
-      'abrev' => ['required', 'unique:materiales'],
+    public static $rules = array(
+      'abrev' => array('required', 'unique:materiales'),
       'lang' => 'required',
-      'user_id' => ['required','numeric']
-    ]; 
+      'user_id' => array('required','numeric')
+    ); 
 
     // Relationsship One To One (one Autore corresponds one User)
     public function user()

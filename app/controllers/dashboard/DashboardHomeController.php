@@ -9,17 +9,18 @@ class DashboardHomeController extends BaseController {
 
   public function getUserOptions()
   {
-    $users_groups   = json_encode(DB::table('users_groups')->lists('group_id', 'user_id'), JSON_UNESCAPED_UNICODE);
-    $users          = json_encode(DB::table('users')->lists('email', 'id'), JSON_UNESCAPED_UNICODE);
-    $groups         = json_encode(DB::table('groups')->lists('name','id'), JSON_UNESCAPED_UNICODE);
+    //dd(JSON_UNESCAPED_UNICODE);
+    $users_groups   = json_encode(DB::table('users_groups')->lists('group_id', 'user_id'), 256);
+    $users          = json_encode(DB::table('users')->lists('email', 'id'), 256);
+    $groups         = json_encode(DB::table('groups')->lists('name','id'), 256);
     $centros        = Centro::all();
 
     $user = Sentry::getUser();
     $isSuperUser = $user->isSuperUser();
 
-    $groups = $user->getGroups();
-    $arrGroupName=[];
-    foreach ($groups as $group) {
+    $groupsPermission = $user->getGroups();
+    $arrGroupName= array();
+    foreach ($groupsPermission as $group) {
       $arrGroupName[]=$group->name;
     }
 

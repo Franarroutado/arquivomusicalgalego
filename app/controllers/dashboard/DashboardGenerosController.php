@@ -41,9 +41,9 @@ class DashboardGenerosController extends BaseController {
         $langField = Input::get('lang');
         if ($langField === '{}') $langField = '';
 
-        $genre = new Genero(
-        [ 'lang'  => $langField,
-          'user_id' => Sentry::getUser()->id ]);
+        $genre = new Genero( array( 
+          'lang'  => $langField,
+          'user_id' => Sentry::getUser()->id ));
 
         if ($genre->save()) {
             return Redirect::route('dashboard.generos.index')
@@ -111,7 +111,7 @@ class DashboardGenerosController extends BaseController {
     public function destroy($genero)
     {
         if ($genero->delete()) return Redirect::route('dashboard.generos.index')
-            ->with('success', trans('app.genres.deleted', ['name' => $genero->nombre]));
+            ->with('success', trans('app.genres.deleted', array('name' => $genero->nombre)));
 
         return Redirect::back()
             ->withErrors($genero->errors)

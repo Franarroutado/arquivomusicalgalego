@@ -41,8 +41,8 @@ class DashboardRegistrosController extends BaseController {
         $materialField = Input::get('material');
         if ($materialField === '{}') $materialField = '';
 
-        $registro = new registro(
-        [ 'nombre' => Input::get('nombre'),
+        $registro = new registro( array(
+          'nombre' => Input::get('nombre'),
           'autore_id' => Input::get('autore_id'),
           'genero_id' => Input::get('genero_id'),
           'arreglista'=> Input::has('arreglista') ? true : false,
@@ -53,7 +53,7 @@ class DashboardRegistrosController extends BaseController {
           'fondo'     => Input::get('fondo'),
           'edicion'   => Input::get('edicion'),
           'comentarios' => Input::get('comentarios'),
-          'user_id' => Sentry::getUser()->id ]);
+          'user_id' => Sentry::getUser()->id ));
 
         if ($registro->save()) {
             return Redirect::route('dashboard.registros.index')
