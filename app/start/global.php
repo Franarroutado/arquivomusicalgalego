@@ -50,12 +50,31 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::missing(function($exception)
 {
-    return Response::view('errors.404', array(), 404);
+   //return Response::view('errors.404', array(), 404);
 });
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+	
+  switch ($code)
+  {
+    case 403:
+        return Response::view('errors.403', array(), 403);
+
+    case 401:
+        return Response::view('errors.401', array(), 401);
+
+    case 404:
+        return Response::view('errors.404', array(), 404);
+
+    // case 500:
+    //   Log::error($exception);
+    //     //return Response::view('errors.500', array(), 500);
+
+    default:
+        //return Response::view('errors.default', array(), $code);
+        Log::error($exception);
+  }
 });
 
 /*

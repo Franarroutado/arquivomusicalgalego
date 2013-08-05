@@ -6,7 +6,7 @@ class DashboardGenerosController extends BaseController {
 
     public function __construct(Genero $genero)
     {
-        // parent::__construct();
+        parent::__construct();
         $this->genero = $genero;
     }
 

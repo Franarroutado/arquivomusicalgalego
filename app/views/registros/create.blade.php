@@ -90,223 +90,224 @@
       </form>
     </div>
   </div>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   {{ HTML::script('ckeditor/ckeditor.js') }}
   {{ HTML::script('assets/lib/bootstrap/js/bootstrap.min.js') }}
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  {{ HTML::script('assets/js/registros_create.js') }}
   <script>
+    client.init();
+    // $(document).ready(function(){
 
-    $(document).ready(function(){
+    //   var mapAutores = [];
+    //   var colAutores = [];
+    //   var mapCentros = [];
+    //   var colCentros = [];
+    //   var mapGeneros = [];
+    //   var colGeneros = [];
 
-      var mapAutores = [];
-      var colAutores = [];
-      var mapCentros = [];
-      var colCentros = [];
-      var mapGeneros = [];
-      var colGeneros = [];
+    //   function init() {
 
-      function init() {
+    //     loadComboMaterial();
+    //     enableTypeaheadOnAutores();
+    //     enableTypeaheadOnCentros();
+    //     enableTypeaheadOnGeneros();
 
-        loadComboMaterial();
-        enableTypeaheadOnAutores();
-        enableTypeaheadOnCentros();
-        enableTypeaheadOnGeneros();
+    //     // Add this plugin in Jquery
+    //     $.substitute = function(str, sub) {
+    //         return str.replace(/\{(.+?)\}/g, function($0, $1) {
+    //             return $1 in sub ? sub[$1] : $0;
+    //         });
+    //     };
 
-        // Add this plugin in Jquery
-        $.substitute = function(str, sub) {
-            return str.replace(/\{(.+?)\}/g, function($0, $1) {
-                return $1 in sub ? sub[$1] : $0;
-            });
-        };
+    //     enableDragnDrop();
+    //   }
 
-        enableDragnDrop();
-      }
+    //   function loadComboMaterial()
+    //   {
+    //     $.getJSON("/rest/materiales", function( results ){
+    //       var options = '';
+    //       $.each(results, function(i, item) {
+    //         options += '<option value="' + i  + '">' + item + ' (' + i  +  ')</option>';
+    //       });
+    //       $("select#cbmMaterial").html(options);
+    //     });
 
-      function loadComboMaterial()
-      {
-        $.getJSON("/rest/materiales", function( results ){
-          var options = '';
-          $.each(results, function(i, item) {
-            options += '<option value="' + i  + '">' + item + ' (' + i  +  ')</option>';
-          });
-          $("select#cbmMaterial").html(options);
-        });
+    //   }
 
-      }
+    //   function enableTypeaheadOnAutores()
+    //   {
+    //     $.getJSON("/rest/autores", function( results ){
+    //       $.each(results, function(key, item) {
+    //         colAutores.push(item);
+    //         mapAutores[item] = key;
+    //       });
+    //       $("#autor").typeahead({ 
+    //         source: colAutores,
+    //         updater: function(autor) 
+    //         { $('#autore_id').val(mapAutores[autor]);
+    //           return autor; }
+    //       });
+    //     });    
+    //   }
 
-      function enableTypeaheadOnAutores()
-      {
-        $.getJSON("/rest/autores", function( results ){
-          $.each(results, function(key, item) {
-            colAutores.push(item);
-            mapAutores[item] = key;
-          });
-          $("#autor").typeahead({ 
-            source: colAutores,
-            updater: function(autor) 
-            { $('#autore_id').val(mapAutores[autor]);
-              return autor; }
-          });
-        });    
-      }
+    //   function enableTypeaheadOnCentros(){
+    //     $.getJSON("/rest/centros", function( results ){
+    //       $.each(results, function(key, item) {
+    //         colCentros.push(item);
+    //         mapCentros[item] = key;
+    //       });
+    //       $("#centro").typeahead({ 
+    //         source: colCentros,
+    //         updater: function(centro) 
+    //         { $('#centro_id').val(mapCentros[centro]);
+    //           return centro; }
+    //       });
+    //     });   
+    //   }
 
-      function enableTypeaheadOnCentros(){
-        $.getJSON("/rest/centros", function( results ){
-          $.each(results, function(key, item) {
-            colCentros.push(item);
-            mapCentros[item] = key;
-          });
-          $("#centro").typeahead({ 
-            source: colCentros,
-            updater: function(centro) 
-            { $('#centro_id').val(mapCentros[centro]);
-              return centro; }
-          });
-        });   
-      }
+    //   function enableTypeaheadOnGeneros()
+    //   {
+    //     $.getJSON("/rest/generos", function( results ){
+    //       $.each(results, function(key, item) {
+    //         colGeneros.push(item);
+    //         mapGeneros[item] = key;
+    //       });
+    //       $("#genero").typeahead({ 
+    //         source: colGeneros,
+    //         updater: function(genero) 
+    //         { $('#genero_id').val(mapGeneros[genero]);
+    //           return genero; }
+    //       });
+    //     });   
+    //   }
 
-      function enableTypeaheadOnGeneros()
-      {
-        $.getJSON("/rest/generos", function( results ){
-          $.each(results, function(key, item) {
-            colGeneros.push(item);
-            mapGeneros[item] = key;
-          });
-          $("#genero").typeahead({ 
-            source: colGeneros,
-            updater: function(genero) 
-            { $('#genero_id').val(mapGeneros[genero]);
-              return genero; }
-          });
-        });   
-      }
+    //   function reorderJsonItems()
+    //   {
+    //     var $items = $('#materialContainer input'); // get the items with data
+    //     var jan = {};
 
-      function reorderJsonItems()
-      {
-        var $items = $('#materialContainer input'); // get the items with data
-        var jan = {};
+    //     $.each($items, function (index, input){
+    //       var arr = $(input).data('material').split(':');
+    //       jan[arr[0]] = arr[1];
+    //     });
 
-        $.each($items, function (index, input){
-          var arr = $(input).data('material').split(':');
-          jan[arr[0]] = arr[1];
-        });
+    //     $('#material').val(JSON.stringify(jan));
+    //   }
 
-        $('#material').val(JSON.stringify(jan));
-      }
-
-      function enableDragnDrop()
-      {
-        $('#materialContainer').sortable({
-          revert:true,
-          stop: reorderJsonItems
-        });
-      }
+    //   function enableDragnDrop()
+    //   {
+    //     $('#materialContainer').sortable({
+    //       revert:true,
+    //       stop: reorderJsonItems
+    //     });
+    //   }
 
 
-      // Return a genre component
-      function buildComponent(content, jsonedMaterial) {
-        // Load the component
-        var genreComponent = '<li><div class="input-append">' +
-                '<label style="cursor: move;" class="btn"><i class="icon-move"></i> </label><input class="span4" data-material="{json}" value="{text}" disabled type="text">' +
-                '<button class="btn deleteGenre" type="button"><i class="icon-remove"></i> </button></div></li>';
-        return $.substitute(genreComponent, {text:content, json:jsonedMaterial});
-      }
+    //   // Return a genre component
+    //   function buildComponent(content, jsonedMaterial) {
+    //     // Load the component
+    //     var genreComponent = '<li><div class="input-append">' +
+    //             '<label style="cursor: move;" class="btn"><i class="icon-move"></i> </label><input class="span4" data-material="{json}" value="{text}" disabled type="text">' +
+    //             '<button class="btn deleteGenre" type="button"><i class="icon-remove"></i> </button></div></li>';
+    //     return $.substitute(genreComponent, {text:content, json:jsonedMaterial});
+    //   }
 
-      // Adds a component to the form
-      function addComponent(component) {
-        var miCont = $('#materialContainer');
+    //   // Adds a component to the form
+    //   function addComponent(component) {
+    //     var miCont = $('#materialContainer');
 
-        miCont.fadeOut(function(){
-          miCont.append(component);
-          miCont.fadeIn();
-        });
-      }
+    //     miCont.fadeOut(function(){
+    //       miCont.append(component);
+    //       miCont.fadeIn();
+    //     });
+    //   }
 
-      // This events clear the genre component clicked
-      $(document).on('click', '.deleteGenre',function(e){
-        var $miParent = $(this).parent();
-        var $container = $('#materialContainer');
-        var material = $(e.target).parent().find('input.span4').data("material").split(":");
+    //   // This events clear the genre component clicked
+    //   $(document).on('click', '.deleteGenre',function(e){
+    //     var $miParent = $(this).parent();
+    //     var $container = $('#materialContainer');
+    //     var material = $(e.target).parent().find('input.span4').data("material").split(":");
 
-        $container.fadeOut(function() {
-          $miParent.remove();
-          $container.fadeIn();
-          substractItem(material[0]);
-        });
-      });
+    //     $container.fadeOut(function() {
+    //       $miParent.remove();
+    //       $container.fadeIn();
+    //       substractItem(material[0]);
+    //     });
+    //   });
 
-      // Substract a item to our JSON
-      function substractItem(key) {
-        var myJSON = getJsonFromInput();
-        delete myJSON[key];
-        setJsonToInput(myJSON);
-      } 
+    //   // Substract a item to our JSON
+    //   function substractItem(key) {
+    //     var myJSON = getJsonFromInput();
+    //     delete myJSON[key];
+    //     setJsonToInput(myJSON);
+    //   } 
 
-      // Stores the JSON to the lang field
-      function setJsonToInput(json) {
-        $('#material').val(JSON.stringify(json));
-      }
+    //   // Stores the JSON to the lang field
+    //   function setJsonToInput(json) {
+    //     $('#material').val(JSON.stringify(json));
+    //   }
 
-      // This event create a new genre component and stores it to our JSON
-      $('#btnAddMaterial').on('click', function()
-      {
+    //   // This event create a new genre component and stores it to our JSON
+    //   $('#btnAddMaterial').on('click', function()
+    //   {
 
-        var $compMaterial = $('#compAddMaterial'); // get create material component
-        var $txtMaterial = $compMaterial.find('#cbmMaterial'); // get combo box
-        var txtAbrev = $txtMaterial.val(); // the te abrev material
+    //     var $compMaterial = $('#compAddMaterial'); // get create material component
+    //     var $txtMaterial = $compMaterial.find('#cbmMaterial'); // get combo box
+    //     var txtAbrev = $txtMaterial.val(); // the te abrev material
 
-        // prevent go any further
-        if (checkItemExists(txtAbrev)) 
-        {
-          alert('ya existe'); return false;
-        }
+    //     // prevent go any further
+    //     if (checkItemExists(txtAbrev)) 
+    //     {
+    //       alert('ya existe'); return false;
+    //     }
 
-        var txtFulltextMaterial = $txtMaterial.find(':selected').text(); // get full text material
-        var chkHijosComp = $compMaterial.find('input');
-        var txtContenido = [];
-        $.each(chkHijosComp, function(i, item){
-          $item = $(item);
-          if($item.prop('checked')) txtContenido.push($item.data('text'));
-          $item.prop('checked',false)
-        });
-        $txtMaterial.val("");
+    //     var txtFulltextMaterial = $txtMaterial.find(':selected').text(); // get full text material
+    //     var chkHijosComp = $compMaterial.find('input');
+    //     var txtContenido = [];
+    //     $.each(chkHijosComp, function(i, item){
+    //       $item = $(item);
+    //       if($item.prop('checked')) txtContenido.push($item.data('text'));
+    //       $item.prop('checked',false)
+    //     });
+    //     $txtMaterial.val("");
 
-        // Build and add component inside the container
-        txtFulltextMaterial += ": " + txtContenido.join(',');
-        var jsonReadyString = txtAbrev + ':'+txtContenido.join(',');
-        var newComponent = buildComponent(txtFulltextMaterial, jsonReadyString);
-        addComponent(newComponent);
+    //     // Build and add component inside the container
+    //     txtFulltextMaterial += ": " + txtContenido.join(',');
+    //     var jsonReadyString = txtAbrev + ':'+txtContenido.join(',');
+    //     var newComponent = buildComponent(txtFulltextMaterial, jsonReadyString);
+    //     addComponent(newComponent);
 
-        // add the new json item
-        var jsonItem = {};
-        jsonItem[txtAbrev] = txtContenido.join(',');
-        addItem(jsonItem);
-      });
+    //     // add the new json item
+    //     var jsonItem = {};
+    //     jsonItem[txtAbrev] = txtContenido.join(',');
+    //     addItem(jsonItem);
+    //   });
 
-      // Returns true if our key exists
-      function checkItemExists(key) {
-        var myJSON = getJsonFromInput();
-        var result = false;
-        $.each(myJSON, function(index, value){
-          if (index === key) result =  true;
-        });
-        return result;
-      }
+    //   // Returns true if our key exists
+    //   function checkItemExists(key) {
+    //     var myJSON = getJsonFromInput();
+    //     var result = false;
+    //     $.each(myJSON, function(index, value){
+    //       if (index === key) result =  true;
+    //     });
+    //     return result;
+    //   }
 
-      // Get our JSON from the lang field
-      function getJsonFromInput() {
-        var $txtMaterial = $('#material');
-        return jQuery.parseJSON($txtMaterial.val());
-      }
+    //   // Get our JSON from the lang field
+    //   function getJsonFromInput() {
+    //     var $txtMaterial = $('#material');
+    //     return jQuery.parseJSON($txtMaterial.val());
+    //   }
 
-      // Puts new item into JSON object
-      function addItem(item) {
-        var myJSON = getJsonFromInput();
-        $.extend(myJSON, item); // puts the new item
-        setJsonToInput(myJSON);
-      } 
+    //   // Puts new item into JSON object
+    //   function addItem(item) {
+    //     var myJSON = getJsonFromInput();
+    //     $.extend(myJSON, item); // puts the new item
+    //     setJsonToInput(myJSON);
+    //   } 
 
-      init();
+    //   init();
 
-    });
+    // });
   </script>
 @stop

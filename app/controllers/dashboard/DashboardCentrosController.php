@@ -6,7 +6,7 @@ class DashboardCentrosController extends BaseController {
 
     public function __construct(Centro $centro)
     {
-        // parent::__construct();
+        parent::__construct();
         $this->centro = $centro;
     }
 

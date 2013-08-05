@@ -13,7 +13,8 @@
     {{ HTML::style('assets/css/theme.css') }}
     {{ HTML::style('assets/lib/font-awesome/css/font-awesome.css') }}
 
-    {{ HTML::script('assets/lib/jquery-1.7.2.min.js')  }}
+    {{-- HTML::script('assets/lib/jquery-1.7.2.min.js')  --}}
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
     <!-- Demo page code -->
 
@@ -75,7 +76,8 @@
                 
             </ul>
             <a class="brand" href="index.html">
-              <span class="first">@lang('app.title')</span> <span class="second">ARQUIVO BANDA DE MUSICA MUNICIPAL DE SILLEDA</span>
+              <span class="first">@lang('app.title')</span> 
+              <span class="second">{{ AMG::returnDefaultCenterName(Sentry::getUser()->id) }}</span>
             </a>
         </div> <!-- navbar-inner -->
     </div> <!-- navbar -->

@@ -82,6 +82,26 @@ Route::group(array('prefix' => 'dashboard', 'before'=>'auth.sentry2'), function(
   Route::get('usuario/propiedades', array('as' => 'dashboard.usuarios.config', 'uses' => 'DashboardHomeController@getUserOptions'));
   Route::post('usuario/propiedades', array('as' => 'dashboard.usuarios.configStore', 'uses' => 'DashboardHomeController@postUserOptions'));
 
+ /** ------------------------------------------
+ *  REST Services Secured
+ *  ------------------------------------------
+ */
+ Route::get(
+  'rest/usuario/setlang/{userid}/{lang}', 
+  array(
+    'as' => 'rest.users.setLangByUserId', 
+    'uses'=>'DashboardHomeController@setJsonedLangByUserId'));
+ Route::get(
+  'rest/usuario/getCentros/{userid}', 
+  array(
+    'as' => 'rest.users.getCentrosById', 
+    'uses'=>'DashboardHomeController@getJsonedCentrosById'));
+ Route::get(
+  'rest/usuario/setCentros/{userid}/{idcentros}', 
+  array(
+    'as' => 'rest.users.setCentrosById', 
+    'uses'=>'DashboardHomeController@setJsonedCentrosById'));
+
 });
 
 /** ------------------------------------------
@@ -137,4 +157,27 @@ Route::get('migrar', function() {
 
 Route::get('buscador', function(){
   return View::make('buscador');
+});
+
+Route::get('rel', function(){
+
+  $generos = Genero::where('lang', 'like', '%bailable%')->where('id', '!=', 6)->get();
+  $root = Genero::find(6);
+ 
+  foreach ($generos as $item) { 
+
+    $item->makeChildOf($root);
+    $item->save();
+  }
+  return "listo";
+});
+
+Route::get('testCentro', function() {
+
+  //$myUser = User::find(27);
+
+  //var_dump($myUser->getAssignedCentros());
+  //echo $myUser->getDefaultCentro();
+
+  return Request::route()->action('as');
 });

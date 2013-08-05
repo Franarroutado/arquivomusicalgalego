@@ -6,7 +6,7 @@ class DashboardRegistrosController extends BaseController {
 
     public function __construct(Registro $registro)
     {
-        // parent::__construct();
+        parent::__construct();
         $this->registro = $registro;
     }
 
@@ -16,9 +16,9 @@ class DashboardRegistrosController extends BaseController {
      * @return Response
      */
     public function index()
-    {
-        $registros = Registro::paginate(15);
-        return View::make('registros.index', compact('registros'));
+    {   
+    $registros = Registro::where('centro_id', $this->defaultCentroId )->paginate(15);
+    return View::make('registros.index', compact('registros'));
     }
 
     /**

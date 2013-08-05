@@ -6,7 +6,7 @@ class DashboardMaterialesController extends BaseController {
 
     public function __construct(Material $material)
     {
-        // parent::__construct();
+        parent::__construct();
         $this->material = $material;
     }
 

@@ -22,10 +22,12 @@ class AMG {
      */
     public static function getLangJSON($jsonString, $lang = null)
     {
-        $currentLant = Config::get('app.config');
-        if (isset($lang)) $currentLant = $lang;
+        $currentLang = Config::get('app.locale');
+        if (isset($lang)) $currentLang = $lang;
 
-        return json_decode($jsonString)->es_gl;
+        $objJson = json_decode($jsonString);
+        if (!isset($objJson->$currentLang)) return trans('no_trans');
+        return $objJson->$currentLang;
     }
 
     /**
@@ -53,5 +55,17 @@ class AMG {
     {
         $randomIndex = array_rand($array);
         return $array[$randomIndex];
+    }
+
+    public static function returnDefaultCenterName($userId)
+    {
+        $user= User::find($userId);
+        return $user->getDefaultCentro();
+    }
+
+    public static function returnDefaultCenterId($userId)
+    {
+        $user= User::find($userId);
+        return $user->getDefaultCentroId();
     }
 }

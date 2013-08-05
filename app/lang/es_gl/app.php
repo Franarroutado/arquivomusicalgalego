@@ -15,6 +15,7 @@ return array(
   'msg' =>  array(
     'forgot_your_password' => '¿Esquenceu a sua password?',
     'no_results' => 'Non atopadose resultados',
+    'no_trans'   => 'Non hay traduccións.'
   ),
   'authors' =>   array( 
     'name' => 'Nome',
@@ -79,6 +80,11 @@ return array(
     'expresion2' => '!Ups¡',
     'expresion3' => '!Ay¡',
     'message'    => 'Esta páxina non existe.',
-    'gohome'     => 'Volver ó inicio.'
-  )
+    'gohome'     => 'Volver ó inicio.'),
+  '401' => array(
+    'expresion1' => '¡Sapristi, caracoles, canastos!', 
+    'expresion2' => '!Ups¡',
+    'expresion3' => '!Ay¡',
+    'message'    => 'Non está autorizado a entrar nesta páxina.',
+    'gohome'     => 'Volver ó inicio.')
 );

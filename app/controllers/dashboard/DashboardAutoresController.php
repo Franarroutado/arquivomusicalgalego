@@ -6,7 +6,7 @@ class DashboardAutoresController extends BaseController {
 
     public function __construct(Autore $autore)
     {
-        // parent::__construct();
+        parent::__construct();
         $this->autore = $autore;
     }
 

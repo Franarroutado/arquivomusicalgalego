@@ -19,6 +19,58 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password');
 
+	public function getAssignedCentros()
+	{
+		$properties= json_decode($this->properties, true);
+		if (!isset($properties['centros']))
+		{
+			$properties['centros']= '';
+			$this->properties= json_encode($properties);
+		}
+		return $properties['centros'];
+	}
+
+	public function setAssignedCentros($idCentros)
+	{
+		$properties= json_decode($this->properties, true);
+		$properties['centros'] = $idCentros;
+		$this->properties = json_encode($properties);
+	}
+
+	public function getDefaultCentro()
+	{
+		$properties= json_decode($this->properties, true);
+		$arrCentros= explode(",",$properties['centros']);
+		$defaultCentro= $arrCentros[0];
+		$centro= Centro::find($defaultCentro);
+		return $centro->nombre;
+	}
+
+	public function getDefaultCentroId()
+	{
+		$properties= json_decode($this->properties, true);
+		$arrCentros= explode(",",$properties['centros']);
+		return $arrCentros[0];
+	}
+
+	public function getDefaultLanguage()
+	{
+		$properties = json_decode($this->properties, true);
+		if (!isset($properties['lang']))
+		{
+			$properties['lang'] = Config::get('app.locale');
+			$this->properties = json_encode($properties);
+		}
+		return $properties['lang'];
+	}
+
+	public function setDefaultLanguage($lang)
+	{
+		$properties= json_decode($this->properties, true);
+		$properties['lang'] = $lang;
+		$this->properties = json_encode($properties);
+	}
+
 	/**
 	 * Get the unique identifier for the user.
 	 *

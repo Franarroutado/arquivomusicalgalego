@@ -27,7 +27,13 @@
             @foreach ($generos as $genero)
               <tr>
                 <td>{{ AMG::getLangJSON($genero->lang) }}</td> 
-                <td>{{ implode(array_keys(json_decode($genero->lang, true)), ", ") }}</td> 
+                <td>
+                  @if (strlen($genero->lang)>0)
+                    {{ implode(array_keys(json_decode($genero->lang, true)), ", ") }}
+                  @else
+                    @lang('app.msg.no_trans')
+                  @endif
+                </td> 
                 <td>{{ $genero->user->first_name }}</td>
                 <td>
                   <div class="btn-toolbar">
