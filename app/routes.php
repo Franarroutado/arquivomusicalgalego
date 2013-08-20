@@ -181,3 +181,13 @@ Route::get('testCentro', function() {
 
   return Request::route()->action('as');
 });
+
+Route::get('testbb', function() {
+  return View::make('testBB');
+});
+
+
+Route::group(array('prefix' => 'api/v1', 'before'=>'auth.sentry2'), function()
+{
+  Route::resource('materiales', 'RestMaterialesController');
+});
